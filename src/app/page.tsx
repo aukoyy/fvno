@@ -11,7 +11,7 @@ export default function Home() {
           <p className="mt-4 text-lg pl-8">-- Utforsk våre tjenester</p>
         </div>
         <Image
-          src="/fv-hero.jpg"
+          src="/fv-hero-min.jpg"
           alt="Full Vase Hero"
           width={1920}
           height={1080}
