@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <div className="">
       <main className="">
-        <div className="absolute md:ml-8 mt-100 md:mt-130 z-10 text-white p-6 rounded-lg"> {/* bg-black/30 */}
+        <div className="absolute bottom-24 md:ml-8 text-white p-6 rounded-lg"> {/* bg-black/30 */}
           <h1 className="text-xl">VELKOMMEN TIL FULL VASE</h1>     
           <p className="mt-4 text-5xl">Frodig blosterdesign til ditt event</p>   
           <p className="mt-8 max-w-xl">Vi tror på blomster som forteller historier, om kjærlighet, glede og alt det vakre som gjør en dag uforglemmelig. Fyll vasen med minner og blomster.</p>
