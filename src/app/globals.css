@@ -8,3 +8,18 @@
   --color-fv-cyan-400: #A4B1BB;
   --color-fv-cyan-600: #6E8BA2;
 }
+
+/* Scrolling banner animation */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-300%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 180s linear infinite;
+}
