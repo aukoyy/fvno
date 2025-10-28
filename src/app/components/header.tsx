@@ -92,24 +92,26 @@ export default function Header() {
       <header className={`fixed py-8 flex items-center w-full z-50 transition-all duration-300 ${
         isVisible ? 'translate-y-0' : '-translate-y-full'
       } ${
-        showBackground ? 'bg-stone-50 backdrop-blur-sm shadow-lg text-gray-900' : 'bg-transparent text-white'
+        showBackground ? 'bg-stone-50 backdrop-blur-sm shadow-lg text-fv-900' : 'bg-transparent text-white'
       }`}>
         {/* Left: Menu button */}
         <div onClick={() => handleMenuToggle()} className="cursor-pointer p-6 shrink-0">
           {!(isOpen && !isClosing) && (
-            <div className="flex space-x-2 hover:text-gray-300"><MenuOutlined className="text-2xl" /> <p>meny</p></div>
+            <div className="flex space-x-2 hover:text-fv-200"><MenuOutlined className="text-2xl" /> <p>meny</p></div>
           )}
         </div>
         
         {/* Center: Title */}
-        <div className="flex-1 flex justify-center items-center">
+        <div className={classNames("flex-1 flex justify-center items-center", {
+          "hidden": isOpen && !isClosing,
+        })}>
           <Image 
             src="/logo-black.png" 
             alt="Logo" 
             width={250} 
             height={100} 
             className={classNames("transition-opacity duration-300", {
-              "hidden": !showBackground || (isOpen && !isClosing),
+              "hidden": !showBackground,
             })}
           />
           <Image 
@@ -118,13 +120,13 @@ export default function Header() {
             width={250} 
             height={100} 
             className={classNames("transition-opacity duration-300", {
-              "hidden": showBackground || (isOpen && !isClosing),
+              "hidden": showBackground,
             })}
           />
           <div className="absolute right-10 md:flex space-x-5 hidden">
             <Link 
               href="https://www.instagram.com/fullvase.no/" 
-              className="flex items-center hover:text-gray-300 transition-colors duration-200"
+              className="flex items-center hover:text-fv-200 transition-colors duration-200"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -170,7 +172,7 @@ export default function Header() {
           
           {/* Close button overlay - stays on top */}
           <div className="absolute top-6 left-6 z-10 p-4 -m-4 py-12 cursor-pointer" onClick={() => handleMenuToggle()}>
-            <div className="text-white flex space-x-2 items-center hover:text-gray-300">
+            <div className="text-white flex space-x-2 items-center hover:text-fv-200">
               <CloseOutlined className="text-2xl" /><p>meny</p>
             </div>
           </div>

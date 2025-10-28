@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Header from "./components/header";
+import { Button } from "antd";
 
 export default function Home() {
   return (
@@ -31,7 +32,9 @@ export default function Home() {
         </div>
         <div className="py-18 bg-fv-300 flex flex-col items-center">
           <p className="text-2xl md:text-6xl font-light text-center mx-18 max-w-2xl">Blomster du <i>faktisk</i> synes er skikkelig vakre. Vi designer din visjon til ditt event eller bryllup.</p>
-          <p className="mt-8 underline">Se tidligere arbeid</p>
+          <Button type="link" href="/portfolio" size="middle" className="mt-8 text-black! hover:text-fv-700! underline">
+            Se tidligere arbeid
+          </Button>
         </div>
       </main>
     </div>
