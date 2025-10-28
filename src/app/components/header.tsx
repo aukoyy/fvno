@@ -32,14 +32,18 @@ export default function Header() {
     return () => window.removeEventListener('scroll', controlHeader);
   }, [lastScrollY]);
 
+  const handleMenuToggle = () => {
+    setIsOpen(!isOpen);
+  }
+
   return (
     <header className={`fixed flex w-full p-8 z-50 transition-all duration-300 ${
       isVisible ? 'translate-y-0' : '-translate-y-full'
     } ${
       hasBackground ? 'bg-white/90 backdrop-blur-sm shadow-lg text-gray-900' : 'bg-transparent text-white'
     }`}>
-      <div onClick={() => setIsOpen(!isOpen)} className="cursor-pointer">
-        {isOpen ? <MenuOutlined className="text-2xl" /> : <CloseOutlined className="text-2xl" />}
+      <div onClick={() => handleMenuToggle()} className="cursor-pointer">
+        {isOpen ? <CloseOutlined className="text-2xl" /> : <MenuOutlined className="text-2xl" />}
       </div>
       <div className="flex justify-center w-full">
         <h1 className="absolute text-3xl">FULL VASE</h1>
