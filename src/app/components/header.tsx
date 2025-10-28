@@ -51,15 +51,15 @@ export default function Header() {
 
   return (
     <>
-      <header className={`fixed flex w-full p-8 z-50 transition-all duration-300 ${
+      <header className={`fixed flex w-full z-50 transition-all duration-300 ${
         isVisible ? 'translate-y-0' : '-translate-y-full'
       } ${
         hasBackground ? 'bg-white/90 backdrop-blur-sm shadow-lg text-gray-900' : 'bg-transparent text-white'
       }`}>
-        <div onClick={() => handleMenuToggle()} className="cursor-pointer">
+        <div onClick={() => handleMenuToggle()} className="cursor-pointer p-6 ">
           {(isOpen && !isClosing) ? <CloseOutlined className="text-2xl" /> : <MenuOutlined className="text-2xl" />}
         </div>
-        <div className="flex justify-center w-full">
+        <div className="flex justify-center items-center w-full">
           <h1 className="absolute text-3xl">FULL VASE</h1>
         </div>
         <h1 className="hidden">third</h1>
@@ -89,8 +89,8 @@ export default function Header() {
           </div>
           
           {/* Close button overlay - stays on top */}
-          <div className="absolute top-8 left-8 z-10">
-            <div onClick={() => handleMenuToggle()} className="cursor-pointer text-white">
+          <div className="absolute top-6 left-6 z-10 p-4 -m-4 cursor-pointer" onClick={() => handleMenuToggle()}>
+            <div className="text-white">
               <CloseOutlined className="text-2xl" />
             </div>
           </div>
