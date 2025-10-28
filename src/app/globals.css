@@ -7,6 +7,7 @@
 
   --color-fv-cyan-400: #A4B1BB;
   --color-fv-cyan-600: #6E8BA2;
+  --color-fv-cyan-800: #4A5F6B;
 }
 
 /* Scrolling banner animation */
@@ -84,5 +85,5 @@
 }
 
 .animate-clip-reveal {
-  animation: clipReveal 0.8s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+  animation: clipReveal 1s cubic-bezier(0.7, 0, 0.3, 1) forwards;
 }

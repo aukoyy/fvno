@@ -7,10 +7,10 @@ export default function Home() {
       <main className="">
         <Header />
         <div className="absolute bottom-24 md:ml-8 text-white p-6 rounded-lg"> {/* bg-black/30 */}
-          <h1 className="text-xl">VELKOMMEN TIL FULL VASE</h1>     
-          <p className="mt-4 text-5xl">Frodig blosterdesign til ditt event</p>   
-          <p className="mt-8 max-w-xl">Vi tror på blomster som forteller historier, om kjærlighet, glede og alt det vakre som gjør en dag uforglemmelig. Fyll vasen med minner og blomster.</p>
-          <p className="mt-4 text-lg pl-8">-- Utforsk våre tjenester</p>
+          <h1 className="text-2xl md:text-4xl">VELKOMMEN TIL FULL VASE</h1>     
+          <p className="mt-4 text-4xl md:text-7xl">Frodig blosterdesign til ditt event</p>   
+          <p className="mt-8 max-w-2xl md:text-lg">Vi tror på blomster som forteller historier, om kjærlighet, glede og alt det vakre som gjør en dag uforglemmelig. Fyll vasen med minner og blomster.</p>
+          <p className="mt-4 text-lg md:text-xl pl-8">-- Utforsk våre tjenester</p>
         </div>
         <Image
           src="/fv-hero-2-min.jpg"
