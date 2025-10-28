@@ -41,6 +41,13 @@ export default function Nav({ setIsOpen }: NavProps) {
           Om oss
         </Link>
         <Link 
+          href="/about"
+          className={linkClassname}
+          onClick={() => setIsOpen(false)}
+        >
+          Om Sara
+        </Link>
+        <Link 
           href="/contact" 
           className={linkClassname}
           onClick={() => setIsOpen(false)}

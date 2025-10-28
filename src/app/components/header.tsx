@@ -2,7 +2,6 @@
 
 import { CloseOutlined, MenuOutlined } from "@ant-design/icons"
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import Nav from "./nav";
 
 export default function Header() {
@@ -10,7 +9,7 @@ export default function Header() {
   const [isClosing, setIsClosing] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [hasBackground, setHasBackground] = useState(false);
+  const [showBackground, setShowBackground] = useState(false);
 
   useEffect(() => {
     const controlHeader = () => {
@@ -19,14 +18,24 @@ export default function Header() {
       // Show header when scrolling up or at the top
       if (currentScrollY < lastScrollY || currentScrollY < 100) {
         setIsVisible(true);
+        // Only show background after header is visible and settled
+        if (currentScrollY > 50) {
+          setTimeout(() => {
+            if (window.scrollY > 50) { // Double check scroll position
+              setShowBackground(true);
+            }
+          }, 100); // Small delay to let header settle
+        } else {
+          setShowBackground(false);
+        }
       } 
       // Hide header when scrolling down (but not at the very top)
       else if (currentScrollY > lastScrollY && currentScrollY > 100) {
         setIsVisible(false);
+        setShowBackground(false); // Immediately hide background
       }
       
-      // Add background when scrolled away from top
-      setHasBackground(currentScrollY > 50);
+
       
       setLastScrollY(currentScrollY);
     };
@@ -60,11 +69,14 @@ export default function Header() {
       <header className={`fixed flex items-center w-full z-50 transition-all duration-300 ${
         isVisible ? 'translate-y-0' : '-translate-y-full'
       } ${
-        hasBackground ? 'bg-white/90 backdrop-blur-sm shadow-lg text-gray-900' : 'bg-transparent text-white'
+        showBackground ? 'bg-white/90 backdrop-blur-sm shadow-lg text-gray-900' : 'bg-transparent text-white'
       }`}>
         {/* Left: Menu button */}
         <div onClick={() => handleMenuToggle()} className="cursor-pointer p-6 shrink-0">
-          {(isOpen && !isClosing) ? <CloseOutlined className="text-2xl" /> : <MenuOutlined className="text-2xl" />}
+          {(isOpen && !isClosing) 
+            ? <CloseOutlined className="text-2xl" /> 
+            : <div className="flex space-x-2"><MenuOutlined className="text-2xl" /> <p>meny</p></div>
+          }
         </div>
         
         {/* Center: Title */}
