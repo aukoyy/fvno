@@ -50,6 +50,23 @@ export default function Header() {
     img.src = '/nav-img-min.jpg';
   }, []);
 
+  // Handle escape key to close menu
+  useEffect(() => {
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && (isOpen || isClosing)) {
+        // Close menu logic (same as handleMenuToggle when closing)
+        setIsClosing(true);
+        setTimeout(() => {
+          setIsOpen(false);
+          setIsClosing(false);
+        }, 300);
+      }
+    };
+
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [isOpen, isClosing]);
+
   const handleMenuToggle = () => {
     if (!isOpen) {
       setIsOpen(true);

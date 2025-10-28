@@ -4,57 +4,56 @@ interface NavProps {
   setIsOpen: (isOpen: boolean) => void;
 }
 
+interface NavItem {
+  href: string;
+  label: string;
+}
+
+interface NavGroup {
+  items: NavItem[];
+}
+
 export default function Nav({ setIsOpen }: NavProps) {
-  const linkClassname = 'block hover:text-gray-300 transition-colors md:my-0 my-4'
-  const linkGroupClassname = 'md:flex justify-center md:space-x-18'
+  const navGroups: NavGroup[] = [
+    {
+      items: [
+        { href: '/', label: 'Hjem' },
+        { href: '/weddings', label: 'Bryllup' },
+        { href: '/events', label: 'Bedrift og event' }
+      ]
+    },
+    {
+      items: [
+        { href: '/about', label: 'Om oss' },
+        { href: '/about', label: 'Om Sara' },
+        { href: '/contact', label: 'Kontakt oss' }
+      ]
+    }
+  ];
+
+  const NavLink = ({ href, label }: NavItem) => (
+    <Link 
+      href={href}
+      className='block hover:text-gray-300 transition-colors md:my-0 my-4'
+      onClick={() => setIsOpen(false)}
+    >
+      {label}
+    </Link>
+  );
+
+  const NavSection = ({ items }: NavGroup) => (
+    <div className='md:flex justify-center md:space-x-18'>
+      {items.map((item, index) => (
+        <NavLink key={`${item.href}-${index}`} {...item} />
+      ))}
+    </div>
+  );
+
   return (
     <nav className="text-4xl">
-      <div className={linkGroupClassname}>
-        <Link 
-          href="/" 
-          className={linkClassname}
-          onClick={() => setIsOpen(false)}
-        >
-          Hjem
-        </Link>
-        <Link 
-          href="/weddings"
-          className={linkClassname}
-          onClick={() => setIsOpen(false)}
-        >
-          Bryllup
-        </Link>
-        <Link 
-          href="/events"
-          className={linkClassname}
-          onClick={() => setIsOpen(false)}
-        >
-          Bedrift og event
-        </Link>
-      </div>
-      <div className={linkGroupClassname}>
-        <Link 
-          href="/about"
-          className={linkClassname}
-          onClick={() => setIsOpen(false)}
-        >
-          Om oss
-        </Link>
-        <Link 
-          href="/about"
-          className={linkClassname}
-          onClick={() => setIsOpen(false)}
-        >
-          Om Sara
-        </Link>
-        <Link 
-          href="/contact" 
-          className={linkClassname}
-          onClick={() => setIsOpen(false)}
-        >
-          Kontakt
-        </Link>
-      </div>
+      {navGroups.map((group, index) => (
+        <NavSection key={index} {...group} />
+      ))}
     </nav>
-  )
+  );
 }
