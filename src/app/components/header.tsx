@@ -97,7 +97,7 @@ export default function Header() {
         {/* Left: Menu button */}
         <div onClick={() => handleMenuToggle()} className="cursor-pointer p-6 shrink-0">
           {!(isOpen && !isClosing) && (
-            <div className="flex space-x-2"><MenuOutlined className="text-2xl" /> <p>meny</p></div>
+            <div className="flex space-x-2 hover:text-gray-300"><MenuOutlined className="text-2xl" /> <p>meny</p></div>
           )}
         </div>
         
@@ -124,7 +124,7 @@ export default function Header() {
           <div className="absolute right-10 md:flex space-x-5 hidden">
             <Link 
               href="https://www.instagram.com/fullvase.no/" 
-              className="flex items-center"
+              className="flex items-center hover:text-gray-300 transition-colors duration-200"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -133,7 +133,6 @@ export default function Header() {
             <Button 
               type="primary" 
               href="/contact" 
-              className="bg-fv-cyan-600! hover:bg-fv-cyan-800!"
               size="large"
               shape="round"
             >
@@ -171,8 +170,8 @@ export default function Header() {
           
           {/* Close button overlay - stays on top */}
           <div className="absolute top-6 left-6 z-10 p-4 -m-4 py-12 cursor-pointer" onClick={() => handleMenuToggle()}>
-            <div className="text-white">
-              <CloseOutlined className="text-2xl" />
+            <div className="text-white flex space-x-2 items-center hover:text-gray-300">
+              <CloseOutlined className="text-2xl" /><p>meny</p>
             </div>
           </div>
         </div>

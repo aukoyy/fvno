@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { ConfigProvider } from "antd";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -21,9 +22,15 @@ export default function RootLayout({children}: {children: React.ReactNode;}) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased mb-18`}>
-        
-        {children}
-      
+        <ConfigProvider
+          theme={{
+            token: {
+              colorPrimary: '#6E8BA2', // fv-cyan-600
+            },
+          }}
+        >
+          {children}
+        </ConfigProvider>
       </body>
     </html>
   );
