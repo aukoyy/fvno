@@ -35,6 +35,12 @@ export default function Header() {
     return () => window.removeEventListener('scroll', controlHeader);
   }, [lastScrollY]);
 
+  // Preload menu background image
+  useEffect(() => {
+    const img = new Image();
+    img.src = '/nav-img-min.jpg';
+  }, []);
+
   const handleMenuToggle = () => {
     if (!isOpen) {
       setIsOpen(true);
@@ -51,18 +57,23 @@ export default function Header() {
 
   return (
     <>
-      <header className={`fixed flex w-full z-50 transition-all duration-300 ${
+      <header className={`fixed flex items-center w-full z-50 transition-all duration-300 ${
         isVisible ? 'translate-y-0' : '-translate-y-full'
       } ${
         hasBackground ? 'bg-white/90 backdrop-blur-sm shadow-lg text-gray-900' : 'bg-transparent text-white'
       }`}>
-        <div onClick={() => handleMenuToggle()} className="cursor-pointer p-6 ">
+        {/* Left: Menu button */}
+        <div onClick={() => handleMenuToggle()} className="cursor-pointer p-6 shrink-0">
           {(isOpen && !isClosing) ? <CloseOutlined className="text-2xl" /> : <MenuOutlined className="text-2xl" />}
         </div>
-        <div className="flex justify-center items-center w-full">
-          <h1 className="absolute text-3xl">FULL VASE</h1>
+        
+        {/* Center: Title */}
+        <div className="flex-1 flex justify-center">
+          <h1 className="text-3xl">FULL VASE</h1>
         </div>
-        <h1 className="hidden">third</h1>
+        
+        {/* Right: Empty space for balance */}
+        <div className="shrink-0 w-16"></div>
       </header>
 
       {/* Menu Overlay with Image Background - render when open or closing */}
