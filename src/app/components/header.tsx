@@ -92,7 +92,7 @@ export default function Header() {
       <header className={`fixed py-8 flex items-center w-full z-50 transition-all duration-300 ${
         isVisible ? 'translate-y-0' : '-translate-y-full'
       } ${
-        showBackground ? 'bg-white/90 backdrop-blur-sm shadow-lg text-gray-900' : 'bg-transparent text-white'
+        showBackground ? 'bg-stone-50 backdrop-blur-sm shadow-lg text-gray-900' : 'bg-transparent text-white'
       }`}>
         {/* Left: Menu button */}
         <div onClick={() => handleMenuToggle()} className="cursor-pointer p-6 shrink-0">
@@ -109,7 +109,7 @@ export default function Header() {
             width={250} 
             height={100} 
             className={classNames("transition-opacity duration-300", {
-              "hidden": !showBackground,
+              "hidden": !showBackground || (isOpen && !isClosing),
             })}
           />
           <Image 
@@ -118,7 +118,7 @@ export default function Header() {
             width={250} 
             height={100} 
             className={classNames("transition-opacity duration-300", {
-              "hidden": showBackground,
+              "hidden": showBackground || (isOpen && !isClosing),
             })}
           />
           <div className="absolute right-10 md:flex space-x-5 hidden">

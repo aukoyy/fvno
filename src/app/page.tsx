@@ -20,7 +20,7 @@ export default function Home() {
           className="w-screen h-screen object-cover"
           style={{ objectPosition: '67% center' }}
         />
-        <div className="py-4 bg-fv-cyan-600 overflow-hidden">
+        <div className="py-4 bg-fv-400 overflow-hidden">
           <div className="animate-scroll whitespace-nowrap">
             {Array.from({ length: 100 }, (_, i) => (
               <span key={i} className="text-white text-2xl font-medium tracking-wider mx-4">
@@ -29,7 +29,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-        <div className="py-18 bg-fv-cyan-400 flex flex-col items-center">
+        <div className="py-18 bg-fv-300 flex flex-col items-center">
           <p className="text-2xl md:text-6xl font-light text-center mx-18 max-w-2xl">Blomster du <i>faktisk</i> synes er skikkelig vakre. Vi designer din visjon til ditt event eller bryllup.</p>
           <p className="mt-8 underline">Se tidligere arbeid</p>
         </div>

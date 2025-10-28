@@ -5,9 +5,21 @@
   --color-tahiti: #3ab7bf;
   --color-bermuda: #78dcca;
 
-  --color-fv-cyan-400: #A4B1BB;
+  /* --color-fv-cyan-400: #A4B1BB;
   --color-fv-cyan-600: #6E8BA2;
-  --color-fv-cyan-800: #4A5F6B;
+  --color-fv-cyan-800: #4A5F6B; */
+
+  --color-fv-50: #f7f7f8;
+  --color-fv-100: #ebedef;
+  --color-fv-200: #d0dae1;
+  --color-fv-300: #abbcc9;
+  --color-fv-400: #738fa5;
+  --color-fv-500: #546d83;
+  --color-fv-600: #425667;
+  --color-fv-700: #344451;
+  --color-fv-800: #28343e;
+  --color-fv-900: #20272c;
+  --color-fv-950: #111518;
 }
 
 /* Scrolling banner animation */
