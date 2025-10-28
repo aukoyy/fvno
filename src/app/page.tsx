@@ -11,11 +11,12 @@ export default function Home() {
           <p className="mt-4 text-lg pl-8">-- Utforsk våre tjenester</p>
         </div>
         <Image
-          src="/fv-hero-min.jpg"
+          src="/fv-hero-2-min.jpg"
           alt="Full Vase Hero"
           width={1920}
           height={1080}
           className="w-screen h-screen object-cover"
+          style={{ objectPosition: '67% center' }}
         />
         <div className="py-4 bg-fv-cyan-600 overflow-hidden">
           <div className="animate-scroll whitespace-nowrap">
