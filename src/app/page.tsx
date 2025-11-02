@@ -51,14 +51,17 @@ export default function Home() {
           <ImageTextLink 
             title="Komplett event pakke"
             description="Fra scenedekor til bordoppsett og stemningslys.Vi planlegger, setter på plass og rydder opp etterpå, slik at alt er tatt hånd om."
+            imageSrc="/cheers-glasses.jpg"
           />
           <ImageTextLink 
             title="Ditt drømmebryllup"
             description="Brudebukett, knapphullsblomst, samt blomsterdekor og små detaljer som gjør bryllupsdagen helt unik."
+            imageSrc="/bridal-girl-flowers.jpg"
           />
           <ImageTextLink 
             title="Spesielle anledninger"
             description="Enten det er frieri, bursdagsfeiring, konfirmasjon eller en kreativ workshop, vi leverer blomster og dekor til din anledning."
+            imageSrc="/giving-flowers.jpg"  
           />
         </div>
 
@@ -72,7 +75,7 @@ export default function Home() {
         <div className="flex flex-col md:flex-row mt-12 justify-center items-center gap-4 mx-4">
           <div className="w-4/5 md:w-1/3">
             <Image
-              src="/landscape-image.png"
+              src="/landing/workshop-girls.jpg"
               alt="placeholder"
               width={1920}
               height={1080}
@@ -80,7 +83,7 @@ export default function Home() {
           </div>          
           <div className="w-4/5 md:w-1/3">
             <Image
-              src="/landscape-image.png"
+              src="/landing/workshop-tie-bouquet.jpg"
               alt="placeholder"
               width={1920}
               height={1080}
@@ -89,15 +92,20 @@ export default function Home() {
         </div>
 
         <div className="py-4 overflow-hidden">
-          <div className="animate-scroll whitespace-nowrap">
-            {Array.from({ length: 100 }, (_, i) => (
-              <span key={i} className="text-2xl tracking-wider mx-4">
-                Ville skjønne
-              </span>
+          <div className="animate-scroll whitespace-nowrap flex">
+            {Array.from({ length: 4 }, (_, i) => (
+              <div key={i} className="shrink-0 mr-8">
+                <Image
+                  src="/landing/ville-skjonne.jpg"
+                  alt="accessorie full vase"
+                  width={800}
+                  height={400}
+                  className="h-32 w-auto object-cover"
+                />
+              </div>
             ))}
           </div>
         </div>
-
 
         <div className="relative flex justify-center">
           <div className="absolute text-center top-56 max-w-2xl  text-white p-6 rounded-lg z-10"> {/* bg-black/30 */}
@@ -108,7 +116,7 @@ export default function Home() {
             </Button>
           </div>
           <Image
-            src="/fv-hero-2-min.jpg"
+            src="/landing/girls-in-flower-field.jpg"
             alt="Full Vase Hero"
             width={1920}
             height={1080}
@@ -117,8 +125,19 @@ export default function Home() {
           />
         </div>
 
+        <footer className="bg-fv-300">
+          <div className="px-22 py-24">
+            <p className="text-3xl md:text-6xl">La din blomsterdekorasjon være nestemanns inspirasjon.</p>
+            <div className="mt-12 md:flex justify-between">
+              <p>Hvilken anledning trenger du blomster til? </p>
+              <Button type="primary" href="/contact" size="large" shape="round" className="mt-6 md:mt-0">
+                Snakk med oss
+              </Button>
+            </div>
+            <hr className="text-fv-500 mt-12 max-w-sm" />
 
-        <div className="mb-90"></div>
+          </div>
+        </footer>
       </main>
     </div>
   );
