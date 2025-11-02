@@ -14,7 +14,7 @@ export default function Home() {
           <p className="mt-4 text-lg md:text-xl pl-8">-- Utforsk våre tjenester</p>
         </div>
         <Image
-          src="/fv-hero-2-min.jpg"
+          src="/landing/fv-hero-2-min.jpg"
           alt="Full Vase Hero"
           width={1920}
           height={1080}
@@ -50,17 +50,17 @@ export default function Home() {
           <ImageTextLink 
             title="Komplett event pakke"
             description="Fra scenedekor til bordoppsett og stemningslys.Vi planlegger, setter på plass og rydder opp etterpå, slik at alt er tatt hånd om."
-            imageSrc="/cheers-glasses.jpg"
+            imageSrc="/landing/cheers-glasses.jpg"
           />
           <ImageTextLink 
             title="Ditt drømmebryllup"
             description="Brudebukett, knapphullsblomst, samt blomsterdekor og små detaljer som gjør bryllupsdagen helt unik."
-            imageSrc="/bridal-girl-flowers.jpg"
+            imageSrc="/landing/bridal-girl-flowers.jpg"
           />
           <ImageTextLink 
             title="Spesielle anledninger"
             description="Enten det er frieri, bursdagsfeiring, konfirmasjon eller en kreativ workshop, vi leverer blomster og dekor til din anledning."
-            imageSrc="/giving-flowers.jpg"  
+            imageSrc="/landing/giving-flowers.jpg"  
           />
         </div>
 
