@@ -18,15 +18,16 @@ export default function Nav({ setIsOpen }: NavProps) {
     {
       items: [
         { href: '/', label: 'Hjem' },
-        { href: '/weddings', label: 'Bryllup' },
-        { href: '/events', label: 'Bedrift og event' }
+        { href: '/weddings', label: 'Event og anledning' },
+        { href: '/events', label: 'Bryllup' }
       ]
     },
     {
       items: [
         { href: '/about', label: 'Om oss' },
-        { href: '/about', label: 'Om Sara' },
-        { href: '/contact', label: 'Kontakt oss' }
+        { href: '/portfolio', label: 'Portefølje' },
+        { href: '/faq', label: 'FAQ' },
+        { href: '/contact', label: 'Kontakt' }
       ]
     }
   ];
