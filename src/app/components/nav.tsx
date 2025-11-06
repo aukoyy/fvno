@@ -43,7 +43,7 @@ export default function Nav({ setIsOpen }: NavProps) {
   );
 
   const NavSection = ({ items }: NavGroup) => (
-    <div className='md:flex justify-center md:space-x-18'>
+    <div className='md:flex justify-between md:space-x-20 md:mt-12'>
       {items.map((item, index) => (
         <NavLink key={`${item.href}-${index}`} {...item} />
       ))}
@@ -51,7 +51,7 @@ export default function Nav({ setIsOpen }: NavProps) {
   );
 
   return (
-    <nav className="text-4xl">
+    <nav className="text-2xl md:text-4xl lg:text-6xl">
       {navGroups.map((group, index) => (
         <NavSection key={index} {...group} />
       ))}

@@ -118,24 +118,26 @@ export default function Header() {
           "hidden": isOpen && !isClosing,
         })}>
           <Link href="/">
-          <Image 
-            src="/logo-black.png" 
-            alt="Logo" 
-            width={250} 
-            height={100} 
-            className={classNames("transition-opacity duration-300", {
-              "hidden": isHomePage && !showBackground,
-            })}
-          />
-          <Image 
-            src="/logo-white.png" 
-            alt="Logo" 
-            width={250} 
-            height={100} 
-            className={classNames("transition-opacity duration-300", {
-              "hidden": !isHomePage || showBackground,
-            })}
-          />
+            <Image 
+              src="/logo-black.png" 
+              alt="Logo" 
+              width={250} 
+              height={100} 
+              style={{ width: "auto", height: "auto" }}
+              className={classNames("transition-opacity duration-300", {
+                "hidden": isHomePage && !showBackground,
+              })}
+            />
+            <Image 
+              src="/logo-white.png" 
+              alt="Logo" 
+              width={250} 
+              height={100} 
+              style={{ width: "auto", height: "auto" }}
+              className={classNames("transition-opacity duration-300", {
+                "hidden": !isHomePage || showBackground,
+              })}
+            />
           </Link>
           <div className="absolute right-10 md:flex space-x-5 hidden">
             <Link 
