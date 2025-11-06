@@ -2,6 +2,7 @@
 
 import { CloseOutlined, InstagramOutlined, MenuOutlined } from "@ant-design/icons"
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Nav from "./nav";
 import Image from "next/image";
 import classNames from "classnames";
@@ -14,39 +15,48 @@ export default function Header() {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [showBackground, setShowBackground] = useState(false);
+  const [showShadow, setShowShadow] = useState(false);
+  const pathname = usePathname();
+  
+  // Check if we're on the homepage
+  const isHomePage = pathname === '/';
 
   useEffect(() => {
     const controlHeader = () => {
       const currentScrollY = window.scrollY;
       
-      // Show header when scrolling up or at the top
-      if (currentScrollY < lastScrollY || currentScrollY < 100) {
-        setIsVisible(true);
-        // Only show background after header is visible and settled
-        if (currentScrollY > 50) {
-          setTimeout(() => {
-            if (window.scrollY > 50) { // Double check scroll position
-              setShowBackground(true);
-            }
-          }, 100); // Small delay to let header settle
-        } else {
+      if (isHomePage) {
+        // Homepage logic - original scroll behavior
+        if (currentScrollY < lastScrollY || currentScrollY < 100) {
+          setIsVisible(true);
+          if (currentScrollY > 50) {
+            setTimeout(() => {
+              if (window.scrollY > 50) {
+                setShowBackground(true);
+                setShowShadow(true);
+              }
+            }, 100);
+          } else {
+            setShowBackground(false);
+            setShowShadow(false);
+          }
+        } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+          setIsVisible(false);
           setShowBackground(false);
+          setShowShadow(false);
         }
-      } 
-      // Hide header when scrolling down (but not at the very top)
-      else if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setIsVisible(false);
-        setShowBackground(false); // Immediately hide background
+      } else {
+        // Non-homepage logic - show shadow only when scrolled
+        setShowBackground(true); // Always show background
+        setShowShadow(currentScrollY > 10); // Show shadow when scrolled down
       }
-      
-
       
       setLastScrollY(currentScrollY);
     };
 
     window.addEventListener('scroll', controlHeader);
     return () => window.removeEventListener('scroll', controlHeader);
-  }, [lastScrollY]);
+  }, [lastScrollY, isHomePage]);
 
   // Preload menu background image
   useEffect(() => {
@@ -92,7 +102,9 @@ export default function Header() {
       <header className={`fixed py-8 flex items-center w-full z-50 transition-all duration-300 ${
         isVisible ? 'translate-y-0' : '-translate-y-full'
       } ${
-        showBackground ? 'bg-stone-50 backdrop-blur-sm shadow-lg text-fv-900' : 'bg-transparent text-white'
+        !isHomePage || showBackground ? 'bg-white backdrop-blur-sm text-fv-900' : 'bg-transparent text-white'
+      } ${
+        showShadow ? 'shadow-lg' : ''
       }`}>
         {/* Left: Menu button */}
         <div onClick={() => handleMenuToggle()} className="cursor-pointer p-6 shrink-0">
@@ -105,13 +117,14 @@ export default function Header() {
         <div className={classNames("flex-1 flex justify-center items-center", {
           "hidden": isOpen && !isClosing,
         })}>
+          <Link href="/">
           <Image 
             src="/logo-black.png" 
             alt="Logo" 
             width={250} 
             height={100} 
             className={classNames("transition-opacity duration-300", {
-              "hidden": !showBackground,
+              "hidden": isHomePage && !showBackground,
             })}
           />
           <Image 
@@ -120,9 +133,10 @@ export default function Header() {
             width={250} 
             height={100} 
             className={classNames("transition-opacity duration-300", {
-              "hidden": showBackground,
+              "hidden": !isHomePage || showBackground,
             })}
           />
+          </Link>
           <div className="absolute right-10 md:flex space-x-5 hidden">
             <Link 
               href="https://www.instagram.com/fullvase.no/" 
