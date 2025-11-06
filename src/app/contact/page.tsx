@@ -1,7 +1,7 @@
 'use client';
 
 import Image from "next/image";
-import { Button, DatePicker, Form, FormProps, Input, message } from "antd";
+import { Button, DatePicker, Form, FormProps, Input } from "antd";
 import TextArea from "antd/es/input/TextArea";
 
 const dateFormat = 'DD.MM.YYYY';

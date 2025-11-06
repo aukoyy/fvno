@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { Button } from "antd";
 import ImageTextLink from "./components/image-text-link";
-import Footer from "./components/footer";
 
 export default function Home() {
   return (
