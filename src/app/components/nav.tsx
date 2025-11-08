@@ -35,7 +35,7 @@ export default function Nav({ setIsOpen }: NavProps) {
   const NavLink = ({ href, label }: NavItem) => (
     <Link 
       href={href}
-      className='block hover:text-gray-300 transition-colors md:my-0 my-4'
+      className='block transition-colors md:my-0 my-4 text-white! hover:text-fv-200!'
       onClick={() => setIsOpen(false)}
     >
       {label}

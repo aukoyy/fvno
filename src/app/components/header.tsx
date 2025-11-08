@@ -142,7 +142,10 @@ export default function Header() {
           <div className="absolute right-10 md:flex space-x-5 hidden">
             <Link 
               href="https://www.instagram.com/fullvase.no/" 
-              className="flex items-center hover:text-fv-200 transition-colors duration-200"
+              className={classNames("flex items-center transition-colors duration-200", {
+                "text-white!": isHomePage || showBackground,
+                "hover:text-fv-200!": isHomePage || showBackground,
+              })}
               target="_blank"
               rel="noopener noreferrer"
             >

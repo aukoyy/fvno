@@ -4,7 +4,6 @@ import Image from "next/image";
 import { Button, DatePicker, Form, FormProps, Input, App } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import { sendContactEmail } from "../actions/contact";
-import { testEnvironment } from "../actions/test";
 import { Dayjs } from 'dayjs';
 
 const dateFormat = 'DD.MM.YYYY';
@@ -65,17 +64,6 @@ export default function Contact() {
     message.error('Vennligst fyll ut alle påkrevde felt korrekt.');
   };
 
-  const handleTestEnvironment = async () => {
-    try {
-      const result = await testEnvironment();
-      console.log('Environment test result:', result);
-      message.info(`API Key: ${result.hasApiKey ? 'Found' : 'Missing'}, Prefix: ${result.keyPrefix}, Length: ${result.keyLength}, Env: ${result.nodeEnv}`);
-    } catch (error) {
-      console.error('Test error:', error);
-      message.error('Test failed');
-    }
-  };
-
 
   return (
     <main className="pt-34 md:text-lg">
@@ -97,7 +85,7 @@ export default function Contact() {
             />
           </div>
           <div className="bg-fv-300 w-full md:w-2/3 pt-12 px-4 md:px-8">
-            <div className="[&_.ant-form-item-label>label]:font-bold w-full">
+            <div className="[&_.ant-form-item-label>label]:font-semibold w-full">
               <Form
                 form={form}
                 name="basic"
@@ -115,7 +103,7 @@ export default function Contact() {
                   rules={[{ required: true, message: 'Venligst oppgi fornavn' }]}
                   className="w-full"
                 >
-                  <Input className="w-full" />
+                  <Input className="w-full h-12" />
                 </Form.Item>
 
                 <Form.Item<FieldType>
@@ -124,7 +112,7 @@ export default function Contact() {
                   rules={[{ required: true, message: 'Venligst oppgi etternavn' }]}
                   className="w-full"
                 >
-                  <Input className="w-full" />
+                  <Input className="w-full h-12" />
                 </Form.Item>
               </div>
               <div className="sm:flex justify-between gap-4">
@@ -137,7 +125,7 @@ export default function Contact() {
                   ]}
                   className="w-full"
                 >
-                  <Input className="w-full" />
+                  <Input className="w-full h-12" />
                 </Form.Item>
 
                 <Form.Item<FieldType>
@@ -146,7 +134,7 @@ export default function Contact() {
                   className="w-full"
                   rules={[{ type: 'string', pattern: /^\+?[0-9\s\-]{7,15}$/, message: 'Venligst oppgi et gyldig mobilnummer' }]}
                 >
-                  <Input className="w-full" />
+                  <Input className="w-full h-12" />
                 </Form.Item>
               </div>
               <div className="sm:flex sm:mr-4">
@@ -156,9 +144,10 @@ export default function Contact() {
                   className="w-full md:w-1/2"
                 >
                   <DatePicker 
-                    className="w-full" 
+                    className="w-full h-12" 
                     format={dateFormat}
                     placeholder="for din anledning"
+
                   />
                 </Form.Item>
               </div>
@@ -168,7 +157,7 @@ export default function Contact() {
                   <TextArea
                     // showCount
                     // maxLength={100}
-                    style={{ height: 120 }}
+                    style={{ height: 200 }}
                   />
                 </Form.Item>
               </div>
@@ -191,11 +180,6 @@ export default function Contact() {
         <p className="font-light text-xl italic">Hold et øye med innboksen, vi tar kontakt snart!</p>
         <p>Vi pleier å svare innen 24 timer (mandag-fredag). Hører du ikke fra oss innen den tid, ta gjerne en titt i søppelpostmappen, bare for sikkerhets skyld.</p>
         <p>Vi gleder oss til å høre fra deg!</p>
-        
-        {/* Temporary test button for debugging */}
-        <Button onClick={handleTestEnvironment} type="dashed">
-          Test Environment (Debug)
-        </Button>
       </div>
     </main>
   );

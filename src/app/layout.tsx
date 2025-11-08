@@ -30,7 +30,8 @@ export default function RootLayout({children}: {children: React.ReactNode;}) {
           theme={{
             token: {
               colorPrimary: '#6E8BA2', // fv-cyan-600
-              // colorLink: '#6E8BA2',
+              colorLink: 'black',
+              colorLinkHover: 'gray',
             },
           }}
         >
