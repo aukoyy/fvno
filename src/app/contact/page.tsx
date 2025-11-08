@@ -69,7 +69,7 @@ export default function Contact() {
     try {
       const result = await testEnvironment();
       console.log('Environment test result:', result);
-      message.info(`API Key exists: ${result.hasApiKey}, Prefix: ${result.keyPrefix}`);
+      message.info(`API Key: ${result.hasApiKey ? 'Found' : 'Missing'}, Prefix: ${result.keyPrefix}, Length: ${result.keyLength}, Env: ${result.nodeEnv}`);
     } catch (error) {
       console.error('Test error:', error);
       message.error('Test failed');
