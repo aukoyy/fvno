@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Button, DatePicker, Form, FormProps, Input, App } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import { sendContactEmail } from "../actions/contact";
+import { testEnvironment } from "../actions/test";
 import { Dayjs } from 'dayjs';
 
 const dateFormat = 'DD.MM.YYYY';
@@ -62,6 +63,17 @@ export default function Contact() {
   const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = () => {
     // console.log('Failed:', errorInfo);
     message.error('Vennligst fyll ut alle påkrevde felt korrekt.');
+  };
+
+  const handleTestEnvironment = async () => {
+    try {
+      const result = await testEnvironment();
+      console.log('Environment test result:', result);
+      message.info(`API Key exists: ${result.hasApiKey}, Prefix: ${result.keyPrefix}`);
+    } catch (error) {
+      console.error('Test error:', error);
+      message.error('Test failed');
+    }
   };
 
 
@@ -179,7 +191,12 @@ export default function Contact() {
         <p className="font-light text-xl italic">Hold et øye med innboksen, vi tar kontakt snart!</p>
         <p>Vi pleier å svare innen 24 timer (mandag-fredag). Hører du ikke fra oss innen den tid, ta gjerne en titt i søppelpostmappen, bare for sikkerhets skyld.</p>
         <p>Vi gleder oss til å høre fra deg!</p>
-      </div>  
+        
+        {/* Temporary test button for debugging */}
+        <Button onClick={handleTestEnvironment} type="dashed">
+          Test Environment (Debug)
+        </Button>
+      </div>
     </main>
   );
 }

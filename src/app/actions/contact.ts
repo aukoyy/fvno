@@ -2,8 +2,6 @@
 
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function sendContactEmail(formData: {
   firstName: string;
   lastName: string;
@@ -20,6 +18,9 @@ export async function sendContactEmail(formData: {
       console.error('RESEND_API_KEY is not set');
       return { success: false, error: 'Email service not configured' };
     }
+
+    // Initialize Resend inside the function to avoid module-level errors
+    const resend = new Resend(process.env.RESEND_API_KEY);
 
     // Validate required fields
     if (!firstName || !lastName || !email) {
