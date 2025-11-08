@@ -49,11 +49,12 @@ export default function Contact() {
         message.success('Takk for henvendelsen! Vi tar kontakt snart.');
         form.resetFields();
       } else {
-        message.error('Noe gikk galt. Prøv igjen senere.');
+        console.error('Server action failed:', result.error);
+        message.error(result.error || 'Noe gikk galt. Prøv igjen senere.');
       }
     } catch (error) {
       message.destroy();
-      console.error('Error:', error);
+      console.error('Client error:', error);
       message.error('Noe gikk galt. Prøv igjen senere.');
     }
   };
