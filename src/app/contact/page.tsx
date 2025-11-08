@@ -1,30 +1,68 @@
 'use client';
 
 import Image from "next/image";
-import { Button, DatePicker, Form, FormProps, Input } from "antd";
+import { Button, DatePicker, Form, FormProps, Input, App } from "antd";
 import TextArea from "antd/es/input/TextArea";
+import { sendContactEmail } from "../actions/contact";
+import { Dayjs } from 'dayjs';
 
 const dateFormat = 'DD.MM.YYYY';
 
+
 export default function Contact() {
   const [form] = Form.useForm();
-
+  const { message } = App.useApp();
+  
   type FieldType = {
     firstName?: string;
     lastName?: string;
     email?: string;
     mobile?: string;
-    date?: string;
+    date?: Dayjs;
     message?: string;
   };
 
   const onFinish: FormProps<FieldType>['onFinish'] = async (values) => {
     console.log('Success:', values);
+    
+    try {
+      // Show loading message
+      message.loading('Sender melding...', 0);
+
+      // Format the date to string before sending to server action
+      const formattedData = {
+        firstName: values.firstName!,
+        lastName: values.lastName!,
+        email: values.email!,
+        mobile: values.mobile,
+        date: values.date ? values.date.format(dateFormat) : undefined,
+        message: values.message,
+      };
+
+      // Call server action
+      const result = await sendContactEmail(formattedData);
+
+      // Hide loading message
+      message.destroy();
+
+      if (result.success) {
+        message.success('Takk for henvendelsen! Vi tar kontakt snart.');
+        form.resetFields();
+      } else {
+        message.error('Noe gikk galt. Prøv igjen senere.');
+      }
+    } catch (error) {
+      message.destroy();
+      console.error('Error:', error);
+      message.error('Noe gikk galt. Prøv igjen senere.');
+    }
   };
 
-  const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
-    console.log('Failed:', errorInfo);
+  const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = () => {
+    // console.log('Failed:', errorInfo);
+    message.error('Vennligst fyll ut alle påkrevde felt korrekt.');
   };
+
 
   return (
     <main className="pt-34 md:text-lg">
@@ -80,7 +118,10 @@ export default function Contact() {
                 <Form.Item<FieldType>
                   label="E-post"
                   name="email"
-                  rules={[{ required: true, message: 'Venligst oppgi e-post' }]}
+                  rules={[
+                    { required: true, message: 'Venligst oppgi e-post' },
+                    { type: 'email', message: 'Venligst oppgi en gyldig e-postadresse' }
+                  ]}
                   className="w-full"
                 >
                   <Input className="w-full" />
@@ -90,6 +131,7 @@ export default function Contact() {
                   label="Mobilnummer"
                   name="mobile"
                   className="w-full"
+                  rules={[{ type: 'string', pattern: /^\+?[0-9\s\-]{7,15}$/, message: 'Venligst oppgi et gyldig mobilnummer' }]}
                 >
                   <Input className="w-full" />
                 </Form.Item>
