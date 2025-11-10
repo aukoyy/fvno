@@ -18,14 +18,14 @@ export default function Nav({ setIsOpen }: NavProps) {
     {
       items: [
         { href: '/', label: 'Hjem' },
-        { href: '/weddings', label: 'Event og anledning' },
-        { href: '/events', label: 'Bryllup' }
+        { href: '/events', label: 'Event og anledning' },
+        // { href: '/bryllup', label: 'Bryllup' }
       ]
     },
     {
       items: [
         { href: '/about', label: 'Om oss' },
-        { href: '/portfolio', label: 'Portefølje' },
+        // { href: '/portfolio', label: 'Portefølje' },
         // { href: '/faq', label: 'FAQ' },
         { href: '/contact', label: 'Kontakt' }
       ]
@@ -43,7 +43,7 @@ export default function Nav({ setIsOpen }: NavProps) {
   );
 
   const NavSection = ({ items }: NavGroup) => (
-    <div className='md:flex justify-between md:space-x-20 md:mt-12'>
+    <div className='md:flex justify-between md:space-x-40 md:mt-12'>
       {items.map((item, index) => (
         <NavLink key={`${item.href}-${index}`} {...item} />
       ))}
