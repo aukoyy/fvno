@@ -4,28 +4,30 @@ import Image from "next/image";
 export default function EventPage() {
   return (
     <main className="">
-      <div className="absolute top-54 text-white text-center flex flex-col items-center w-full">
-        <h1 className="text-8xl">Event & Anledning</h1>
-        <p className="text-3xl mt-12">Blomster til store og små anledninger</p>
-        <div className="w-32 mt-12">
-          <Image
-            src="/event/circle-white.png"
-            alt="Logo"
-            width={500}
-            height={500}
-          />    
+      <div className="relative w-screen h-screen flex items-center justify-center">
+        <Image
+          src="/event/tise-stage.jpg"
+          alt="Scenen på Tise Awards dekorert med blomster fra Full Vase"
+          width={500}
+          height={500}
+          className="absolute inset-0 w-full h-full object-cover -z-10"
+        />  
+        <div className="text-white text-center flex flex-col items-center z-10 px-4 mt-24">
+          <h1 className="text-4xl md:text-6xl lg:text-8xl">Event & Anledning</h1>
+          <p className="text-lg md:text-2xl lg:text-3xl mt-6 md:mt-12">Blomster til store og små anledninger</p>
+          <div className="w-20 md:w-28 lg:w-32 mt-16 md:mt-24">
+            <Image
+              src="/event/circle-white.png"
+              alt="Logo"
+              width={500}
+              height={500}
+            />    
+          </div>
         </div>
       </div>
-      <Image
-        src="/event/tise-stage.jpg"
-        alt="Scenen på Tise Awards dekorert med blomster fra Full Vase"
-        width={500}
-        height={500}
-        className="w-screen h-screen object-cover"
-      />  
       
-      <div className="p-24 max-w-7xl mx-auto text-center">
-        <h2 className="text-7xl mb-12">
+      <div className="p-24 max-w-5xl mx-auto text-center">
+        <h2 className="text-5xl mb-12 ">
           Full Vase leverer blomster til bedriftsarrangementer, konfirmasjon, babyshower, utdrikningslag, festivaler, prisutdelinger, julebord og andre spesielle anledninger – alltid med fokus på helhet, stemning og uttrykk.
         </h2>
         <p className="max-w-xl text-3xl mx-auto">Er du en bedrift og planlegger en stilfull gallamiddag, en produktlansering eller et storslått firmaarrangement? Vi leverer alltid med samme grad av kreativitet, omtanke og profesjonalitet.</p>

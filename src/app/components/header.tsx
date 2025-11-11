@@ -19,7 +19,7 @@ export default function Header() {
   const [showShadow, setShowShadow] = useState(false);
   const pathname = usePathname();
   
-  const whiteThemePages = ['/', '/event'];
+  const whiteThemePages = ['/', '/event', '/wedding'];
   const isWhiteThemePage = whiteThemePages.includes(pathname);
 
   useEffect(() => {
