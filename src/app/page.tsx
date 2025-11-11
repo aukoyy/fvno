@@ -6,7 +6,6 @@ export default function Home() {
   return (
     <div className="">
       <main className="">
-        
         <div className="absolute bottom-24 md:ml-8 text-white p-6 rounded-lg"> {/* bg-black/30 */}
           <h1 className="text-2xl md:text-4xl">VELKOMMEN TIL FULL VASE</h1>     
           <p className="mt-4 text-4xl md:text-7xl">Frodig blosterdesign til ditt event</p>   

@@ -11,18 +11,25 @@ import Link from "next/link";
 
 
 export default function Header() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false); // is the menu open
   const [isClosing, setIsClosing] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [showHeader, setShowHeader] = useState(true);
+  const [showHeader, setShowHeader] = useState(false); // Start transparent for white theme pages
   const [showShadow, setShowShadow] = useState(false);
   const pathname = usePathname();
   
   const whiteThemePages = ['/', '/event'];
   const isWhiteThemePage = whiteThemePages.includes(pathname);
+
+  useEffect(() => {
+    console.log('Initial showHeader state:', showHeader);
+      // setShowHeader(true);
+      // setShowShadow(true);
+  }, [showHeader]);
   
   useEffect(() => {
+    console.log('showHeader:', showHeader);
     const controlHeader = () => {
       const currentScrollY = window.scrollY;
       
@@ -32,6 +39,7 @@ export default function Header() {
           if (currentScrollY > 50) {
             setTimeout(() => {
               if (window.scrollY > 50) {
+                console.log('Setting showHeader to true from scroll up');
                 setShowHeader(true);
                 setShowShadow(true);
               }
@@ -46,6 +54,7 @@ export default function Header() {
           setShowShadow(false);
         }
       } else {
+        console.log('Setting showHeader to true for non-white theme page');
         setShowHeader(true);
         setShowShadow(currentScrollY > 10); 
       }
@@ -55,7 +64,7 @@ export default function Header() {
 
     window.addEventListener('scroll', controlHeader);
     return () => window.removeEventListener('scroll', controlHeader);
-  }, [lastScrollY, isWhiteThemePage]);
+  }, [lastScrollY, pathname, isWhiteThemePage, showHeader]);
 
   // Preload menu background image
   useEffect(() => {
@@ -98,13 +107,13 @@ export default function Header() {
 
   return (
     <>
-      <header className={`fixed py-8 flex items-center w-full z-50 transition-all duration-300 ${
-        isVisible ? 'translate-y-0' : '-translate-y-full'
-      } ${
-        !isWhiteThemePage || showHeader ? 'bg-white backdrop-blur-sm text-fv-900' : 'bg-transparent text-white'
-      } ${
-        showShadow ? 'shadow-lg' : ''
-      }`}>
+      <header className={classNames(`fixed py-8 flex items-center w-full z-50 transition-all duration-300`, {
+        'translate-y-0': isVisible,
+        '-translate-y-full': !isVisible,
+        'bg-white backdrop-blur-sm text-fv-900': showHeader,
+        'bg-transparent text-white': !showHeader,
+        'shadow-lg': showShadow,
+      })}>
         {/* Left: Menu button */}
         <div onClick={() => handleMenuToggle()} className="cursor-pointer p-6 shrink-0">
           {!(isOpen && !isClosing) && (

@@ -1,9 +1,9 @@
 import { Button } from "antd";
 import Image from "next/image";
 
-export default function EventsPage() {
+export default function EventPage() {
   return (
-    <main className="pt-34 md:text-lg">
+    <main className="">
       <div className="absolute top-54 text-white text-center flex flex-col items-center w-full">
         <h1 className="text-8xl">Event & Anledning</h1>
         <p className="text-3xl mt-12">Blomster til store og små anledninger</p>
