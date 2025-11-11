@@ -18,7 +18,7 @@ export default function Nav({ setIsOpen }: NavProps) {
     {
       items: [
         { href: '/', label: 'Hjem' },
-        { href: '/events', label: 'Event og anledning' },
+        { href: '/event', label: 'Event og anledning' },
         // { href: '/bryllup', label: 'Bryllup' }
       ]
     },

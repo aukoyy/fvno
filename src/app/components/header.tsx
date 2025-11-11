@@ -9,46 +9,45 @@ import classNames from "classnames";
 import { Button } from "antd";
 import Link from "next/link";
 
+
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [showBackground, setShowBackground] = useState(false);
+  const [showHeader, setShowHeader] = useState(true);
   const [showShadow, setShowShadow] = useState(false);
   const pathname = usePathname();
   
-  // Check if we're on the homepage
-  const isHomePage = pathname === '/';
-
+  const whiteThemePages = ['/', '/event'];
+  const isWhiteThemePage = whiteThemePages.includes(pathname);
+  
   useEffect(() => {
     const controlHeader = () => {
       const currentScrollY = window.scrollY;
       
-      if (isHomePage) {
-        // Homepage logic - original scroll behavior
+      if (isWhiteThemePage) {
         if (currentScrollY < lastScrollY || currentScrollY < 100) {
           setIsVisible(true);
           if (currentScrollY > 50) {
             setTimeout(() => {
               if (window.scrollY > 50) {
-                setShowBackground(true);
+                setShowHeader(true);
                 setShowShadow(true);
               }
             }, 100);
           } else {
-            setShowBackground(false);
+            setShowHeader(false);
             setShowShadow(false);
           }
         } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
           setIsVisible(false);
-          setShowBackground(false);
+          setShowHeader(false);
           setShowShadow(false);
         }
       } else {
-        // Non-homepage logic - show shadow only when scrolled
-        setShowBackground(true); // Always show background
-        setShowShadow(currentScrollY > 10); // Show shadow when scrolled down
+        setShowHeader(true);
+        setShowShadow(currentScrollY > 10); 
       }
       
       setLastScrollY(currentScrollY);
@@ -56,7 +55,7 @@ export default function Header() {
 
     window.addEventListener('scroll', controlHeader);
     return () => window.removeEventListener('scroll', controlHeader);
-  }, [lastScrollY, isHomePage]);
+  }, [lastScrollY, isWhiteThemePage]);
 
   // Preload menu background image
   useEffect(() => {
@@ -102,7 +101,7 @@ export default function Header() {
       <header className={`fixed py-8 flex items-center w-full z-50 transition-all duration-300 ${
         isVisible ? 'translate-y-0' : '-translate-y-full'
       } ${
-        !isHomePage || showBackground ? 'bg-white backdrop-blur-sm text-fv-900' : 'bg-transparent text-white'
+        !isWhiteThemePage || showHeader ? 'bg-white backdrop-blur-sm text-fv-900' : 'bg-transparent text-white'
       } ${
         showShadow ? 'shadow-lg' : ''
       }`}>
@@ -125,7 +124,7 @@ export default function Header() {
               height={100} 
               style={{ width: "auto", height: "auto" }}
               className={classNames("transition-opacity duration-300", {
-                "hidden": isHomePage && !showBackground,
+                "hidden": isWhiteThemePage && !showHeader,
               })}
             />
             <Image 
@@ -135,7 +134,7 @@ export default function Header() {
               height={100} 
               style={{ width: "auto", height: "auto" }}
               className={classNames("transition-opacity duration-300", {
-                "hidden": !isHomePage || showBackground,
+                "hidden": !isWhiteThemePage || showHeader,
               })}
             />
           </Link>
@@ -143,8 +142,8 @@ export default function Header() {
             <Link 
               href="https://www.instagram.com/fullvase.no/" 
               className={classNames("flex items-center transition-colors duration-200", {
-                "text-white!": isHomePage || showBackground,
-                "hover:text-fv-200!": isHomePage || showBackground,
+                "text-white!": isWhiteThemePage || showHeader,
+                "hover:text-fv-200!": isWhiteThemePage || showHeader,
               })}
               target="_blank"
               rel="noopener noreferrer"

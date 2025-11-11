@@ -4,21 +4,17 @@ import Image from "next/image";
 export default function EventsPage() {
   return (
     <main className="pt-34 md:text-lg">
-      {/* <div className="absolute bottom-24 md:ml-8 text-white p-6 rounded-lg">
-        <h1 className="text-2xl md:text-4xl">VELKOMMEN TIL FULL VASE</h1>     
-        <p className="mt-4 text-4xl md:text-7xl">Frodig blosterdesign til ditt event</p>   
-        <p className="mt-8 max-w-2xl md:text-lg">Vi tror på blomster som forteller historier, om kjærlighet, glede og alt det vakre som gjør en dag uforglemmelig. Fyll vasen med minner og blomster.</p>
-        <p className="mt-4 text-lg md:text-xl pl-8">-- Utforsk våre tjenester</p>
-      </div> */}
-      <div className="absolute top-200 text-white text-center flex flex-col items-center w-full">
-        <h1 className="text-9xl">Event & Anledning</h1>
+      <div className="absolute top-54 text-white text-center flex flex-col items-center w-full">
+        <h1 className="text-8xl">Event & Anledning</h1>
         <p className="text-3xl mt-12">Blomster til store og små anledninger</p>
-        <Image
-          src="/event/circle-white.png"
-          alt="Logo"
-          width={500}
-          height={500}
-        />    
+        <div className="w-32 mt-12">
+          <Image
+            src="/event/circle-white.png"
+            alt="Logo"
+            width={500}
+            height={500}
+          />    
+        </div>
       </div>
       <Image
         src="/event/tise-stage.jpg"
@@ -39,12 +35,12 @@ export default function EventsPage() {
 
         <div>
           <div>
-            <Image
+            {/* <Image
               src="/event/event-collage-2.jpg"
               alt="Kollasj av bilder fra ulike eventer dekorert med blomster fra Full Vase"
               width={100}
               height={100}
-            />
+            /> */}
           </div>
           <div>
             <h2>Våre tjenester for event & anledning inkluderer:</h2>
