@@ -59,10 +59,51 @@ export default function EventPage() {
               Kontakt oss her
             </Button>
           </div>
-
         </div>
       </div>
-    <div className="mt-56"></div>
+      
+      <div className="relative w-full flex items-center justify-center text-center mt-18">
+        <Image
+          src="/landing/fv-hero-2-min.jpg"
+          alt="Scenen på Tise Awards dekorert med blomster fra Full Vase"
+          width={500}
+          height={500}
+          className="absolute inset-0 w-full h-full object-cover -z-10"
+        />  
+        <div className="text-white py-96">
+          <h3 className="text-7xl font-light">Hva passer til ditt event?</h3>
+          <Button type="link" href="/portfolio" size="large" className="underline! mt-6 text-white! hover:text-fv-200! pl-0! hidden!">
+            Få inspirasjon fra tidligere events i porteføljen vår.
+          </Button>
+        </div>
+      </div>
+
+      <div className="flex flex-col mx-12 md:mx-auto text-center mt-40 max-w-xl space-y-8">
+        <h2 className="text-6xl font-light">Våre faste partnere</h2>
+        <p className="mt-8">Full Vase er stolt samarbeidspartner av flere fantastiske lokaler hvor du kan ha ditt event.</p>
+        <Button type="link" href="/no-address" size="middle" className="underline! font-bold!">
+          Gamle Logen
+        </Button>
+        <Button type="link" href="/no-address" size="middle" className="underline! font-bold!">
+          Villa Lilleborg
+        </Button>
+        <Button type="link" href="/no-address" size="middle" className="underline! font-bold!">
+          Stortingsgata Kurs & Konferanse
+        </Button>
+        <p>
+          Booker du arrangementet ditt hos våre samarbeidspartnere, kan du være trygg på at blomsterdekorasjonene harmonerer med lokalets uttrykk og setter prikken over i-en på arrangementet.
+        </p>
+      </div>
+
+      <div className="border-4 border-green-300 text-center mt-12 w-full">logos</div>
+
+      <div className="text-center mt-24">
+        <p className="italic">Ønsker du å inngå samarbeid?</p>
+        <Button type="link" href="/contact" size="middle" className="underline! mt-6">
+          Send forespørsel
+        </Button>
+      </div>
+      <div className="mt-56"></div>
     </main>
   )
 }
