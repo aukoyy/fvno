@@ -24,7 +24,7 @@ export default function Nav({ setIsOpen }: NavProps) {
     },
     {
       items: [
-        { href: '/about', label: 'Om oss' },
+        // { href: '/about', label: 'Om oss' },
         // { href: '/portfolio', label: 'Portefølje' },
         // { href: '/faq', label: 'FAQ' },
         { href: '/contact', label: 'Kontakt' }
@@ -35,7 +35,7 @@ export default function Nav({ setIsOpen }: NavProps) {
   const NavLink = ({ href, label }: NavItem) => (
     <Link 
       href={href}
-      className='block transition-colors md:my-0 my-4 text-white! hover:text-fv-200!'
+      className='block transition-colors my-4 text-white! hover:text-fv-200!'
       onClick={() => setIsOpen(false)}
     >
       {label}
@@ -43,7 +43,7 @@ export default function Nav({ setIsOpen }: NavProps) {
   );
 
   const NavSection = ({ items }: NavGroup) => (
-    <div className='md:flex justify-between md:space-x-40 md:mt-12'>
+    <div className='lg:flex justify-between lg:space-x-24 lg:mt-12'>
       {items.map((item, index) => (
         <NavLink key={`${item.href}-${index}`} {...item} />
       ))}
@@ -51,7 +51,7 @@ export default function Nav({ setIsOpen }: NavProps) {
   );
 
   return (
-    <nav className="text-2xl md:text-4xl lg:text-6xl">
+    <nav className="lg:flex text-2xl md:text-3xl lg:text-6xl lg:space-x-24 font-serif">
       {navGroups.map((group, index) => (
         <NavSection key={index} {...group} />
       ))}

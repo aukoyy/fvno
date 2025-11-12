@@ -66,14 +66,14 @@ export default function Contact() {
 
 
   return (
-    <main className="pt-34 md:text-lg">
+    <main className="pt-34 md:text-lg font-serif">
       <div className="text-center mt-16 max-w-lg mx-6 md:mx-auto">
         <h1 className="text-5xl md:text-7xl">La oss snakke blomster!</h1>
-        <p className="mt-12">Enten planene er spikret, eller bare i startfasen, gleder vi oss til å høre mer.</p>
-        <p className="mt-12">Del gjerne litt om anledningen du ønsker blomster til nedenfor, så tar vi kontakt for å snakke om tilgjengelighet, uttrykk og neste steg.</p>
+        <p className="mt-12 font-sans">Enten planene er spikret, eller bare i startfasen, gleder vi oss til å høre mer.</p>
+        <p className="mt-12 italic font-extralight font-sans">Del gjerne litt om anledningen du ønsker blomster til nedenfor, så tar vi kontakt for å snakke om tilgjengelighet, uttrykk og neste steg.</p>
       </div>
 
-      <div className="mt-16 bg-fv-00 md:bg-white md:flex md:justify-center mx-8 lg:mx-24">
+      <div className="mt-16 md:bg-white md:flex md:justify-center mx-8 lg:mx-24">
         <div className="w-full md:max-w-7xl md:flex">
           <div className="hidden md:block">
             <Image
@@ -146,7 +146,7 @@ export default function Contact() {
                   <DatePicker 
                     className="w-full h-12" 
                     format={dateFormat}
-                    placeholder="for din anledning"
+                    placeholder="For din anledning"
 
                   />
                 </Form.Item>
@@ -176,10 +176,10 @@ export default function Contact() {
       </div>
       
 
-      <div className="max-w-lg my-18 space-y-8 text-center mx-6 md:mx-auto">
+      <div className="max-w-lg mt-18 mb-32 space-y-12 text-center mx-6 md:mx-auto">
         <p className="font-light text-xl italic">Hold et øye med innboksen, vi tar kontakt snart!</p>
-        <p>Vi pleier å svare innen 24 timer (mandag-fredag). Hører du ikke fra oss innen den tid, ta gjerne en titt i søppelpostmappen, bare for sikkerhets skyld.</p>
-        <p>Vi gleder oss til å høre fra deg!</p>
+        <p className="font-sans font-extralight">Vi pleier å svare innen 24 timer (mandag-fredag). Hører du ikke fra oss innen den tid, ta gjerne en titt i søppelpostmappen, bare for sikkerhets skyld.</p>
+        <p className="font-bold">Vi gleder oss til å høre fra deg!</p>
       </div>
     </main>
   );

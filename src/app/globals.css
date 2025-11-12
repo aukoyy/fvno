@@ -39,6 +39,10 @@
   animation: scroll 180s linear infinite;
 }
 
+.animate-scroll-ville-skjonne {
+  animation: scroll 60s linear infinite;
+}
+
 /* Menu curtain slide animation */
 @keyframes slideDown {
   0% {

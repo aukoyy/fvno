@@ -70,7 +70,7 @@ export default function Header() {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const img = new window.Image();
-      img.src = '/nav-img-min.jpg';
+      img.src = '/nav/workshop-girls.jpg';
     }
   }, []);
 
@@ -117,7 +117,7 @@ export default function Header() {
         {/* Left: Menu button */}
         <div onClick={() => handleMenuToggle()} className="cursor-pointer p-6 shrink-0">
           {!(isOpen && !isClosing) && (
-            <div className="flex space-x-2 hover:text-fv-200"><MenuOutlined className="text-2xl" /> <p>meny</p></div>
+            <div className="flex space-x-2 hover:text-fv-200"><MenuOutlined className="text-2xl" /> <p>MENY</p></div>
           )}
         </div>
         
@@ -151,8 +151,8 @@ export default function Header() {
             <Link 
               href="https://www.instagram.com/fullvase.no/" 
               className={classNames("flex items-center transition-colors duration-200", {
-                "text-white!": isWhiteThemePage || showHeader,
-                "hover:text-fv-200!": isWhiteThemePage || showHeader,
+                "text-white!": isWhiteThemePage && !showHeader,
+                "hover:text-fv-200!": isWhiteThemePage && !showHeader,
               })}
               target="_blank"
               rel="noopener noreferrer"
@@ -185,11 +185,11 @@ export default function Header() {
             <div 
               className="w-full h-full bg-cover bg-center bg-no-repeat"
               style={{
-                backgroundImage: 'url(/nav-img-min.jpg)',
+                backgroundImage: 'url(/nav/workshop-girls.jpg)',
               }}
             >
               {/* Menu Content */}
-              <div className="flex items-center justify-center h-full bg-black/40">
+              <div className="flex items-center justify-center h-full bg-black/55">
                 <div className={`text-center text-white ${isClosing ? '' : 'animate-fade-in'}`}>
                   <Nav setIsOpen={setIsOpen} />
                 </div>
@@ -200,7 +200,7 @@ export default function Header() {
           {/* Close button overlay - stays on top */}
           <div className="absolute top-6 left-6 z-10 p-4 -m-4 py-12 cursor-pointer" onClick={() => handleMenuToggle()}>
             <div className="text-white flex space-x-2 items-center hover:text-fv-200">
-              <CloseOutlined className="text-2xl" /><p>meny</p>
+              <CloseOutlined className="text-2xl" /><p>MENY</p>
             </div>
           </div>
         </div>
