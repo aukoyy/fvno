@@ -143,7 +143,7 @@ export default function Contact() {
                   name="email"
                   rules={[
                     { required: true, message: 'Venligst oppgi e-post' },
-                    { type: 'email', message: 'Venligst oppgi en gyldig e-postadresse' }
+                    // { type: 'email', message: 'Venligst oppgi en gyldig e-postadresse' }
                   ]}
                   className="w-full"
                 >
