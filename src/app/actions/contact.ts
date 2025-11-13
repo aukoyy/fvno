@@ -31,8 +31,9 @@ export async function sendContactEmail(formData: {
     const environment = process.env.NODE_ENV || 'development';
     const recipientEmail = environment === 'production' ? 'hei@fullvase.no' : 'oyvind.auk@gmail.com';
     await resend.emails.send({
-      from: 'admin@fullvase.no',
+      from: 'Full Vase <admin@fullvase.no>',
       to: recipientEmail,
+      replyTo: email,
       subject: 'Ny henvendelse fra nettsiden 🎉',
       html: `
         <h2>Ny henvendelse fra nettsiden</h2>
