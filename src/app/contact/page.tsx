@@ -155,8 +155,6 @@ export default function Contact() {
               <div className="mt-8">
                 <Form.Item label="Melding" name="message">
                   <TextArea
-                    // showCount
-                    // maxLength={100}
                     style={{ height: 200 }}
                   />
                 </Form.Item>
