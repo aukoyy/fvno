@@ -8,7 +8,7 @@ import Image from "next/image";
 import classNames from "classnames";
 import { Button } from "antd";
 import Link from "next/link";
-import { motion } from "motion/react";
+import { MotionDivFadeDown } from "../../components/motion/MotionDivFadeDown";
 
 
 export default function Header() {
@@ -109,10 +109,7 @@ export default function Header() {
         'shadow-lg': showShadow,
       })}>
         {/* Left: Menu button */}
-        <motion.div 
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeIn", delay: 0.1 }}
+        <MotionDivFadeDown 
           onClick={() => handleMenuToggle()} 
           className="cursor-pointer p-6 shrink-0"
         >
@@ -124,13 +121,10 @@ export default function Header() {
               <MenuOutlined className="text-2xl" /> <p>MENY</p>
             </div>
           )}
-        </motion.div>
+        </MotionDivFadeDown>
         
         {/* Center: Title */}
-        <motion.div 
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeIn", delay: 0.1 }}
+        <MotionDivFadeDown 
           className={classNames("flex-1 flex justify-center items-center", {
             "hidden": isOpen && !isClosing,
           })}
@@ -157,11 +151,13 @@ export default function Header() {
               })}
             />
           </Link>
-        </motion.div>
+        </MotionDivFadeDown>
         
         {/* Right: Instagram + Contact button */}
         {(!isOpen || isClosing) && (
-          <div className="hidden md:flex space-x-5 mr-10 items-center shrink-0">
+          <MotionDivFadeDown 
+            className="hidden md:flex space-x-5 mr-10 items-center shrink-0"
+          >
             <Link 
               href="https://www.instagram.com/fullvase.no/" 
               className={classNames("flex items-center transition-colors duration-200", {
@@ -181,8 +177,9 @@ export default function Header() {
             >
               Kontakt oss
             </Button>
-          </div>
-        )}      </header>
+          </MotionDivFadeDown>
+        )}      
+      </header>
 
       {/* Menu Overlay with Image Background - render when open or closing */}
       {(isOpen || isClosing) && (
