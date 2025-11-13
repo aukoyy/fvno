@@ -30,6 +30,30 @@ export default function Home() {
             ))}
           </div>
         </div>
+
+        <div className="flex justify-center lg:my-12">
+          <div className="lg:max-w-9xl ">
+            <Image 
+              src="/landing/julekranskurs-mathallen.png"
+              alt="Julekranskurs på Mathallen"
+              width={2920}
+              height={2080}
+              className="w-full h-auto object-cover"
+            />
+            <div className="justify-around hidden md:flex">
+              <span></span>
+              <Button type="primary" target="_blank" href="https://fullvase.makeplans.com/events/42152" size="large" className="-m-20 bg-green-900! font-bold! hover:bg-green-800!">
+                Book nå!
+              </Button>
+            </div>
+            <div className="flex justify-around md:hidden">
+              <span></span>
+              <Button type="primary" target="_blank" href="https://fullvase.makeplans.com/events/42152" size="small" className="-m-8 bg-green-900! hover:bg-green-800!">
+                Book nå!
+              </Button>
+            </div>
+          </div>
+        </div>
         
         <div className="py-16 md:py-24 bg-fv-250 flex flex-col items-center">
           <p className="text-2xl md:text-6xl font-light text-center mx-18 max-w-4xl leading-relaxed md:leading-snug">Blomster du <i>faktisk</i> synes er skikkelig vakre. Vi designer din visjon til ditt event eller bryllup.</p>
