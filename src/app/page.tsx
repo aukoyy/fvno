@@ -34,7 +34,7 @@ export default function Home() {
         <div className="flex justify-center lg:my-12">
           <div className="lg:max-w-9xl ">
             <Image 
-              src="/landing/julekranskurs-mathallen.png"
+              src="/landing/julekranskurs.png"
               alt="Julekranskurs på Mathallen"
               width={2920}
               height={2080}
