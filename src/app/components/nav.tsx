@@ -18,7 +18,7 @@ interface NavGroup {
 export default function Nav({ setIsOpen }: NavProps) {
   const pathname = usePathname();
   const handleLinkClick = () => {
-    setTimeout(() => setIsOpen(false), 150);
+    setTimeout(() => setIsOpen(false), 200);
   }
   
   const navGroups: NavGroup[] = [

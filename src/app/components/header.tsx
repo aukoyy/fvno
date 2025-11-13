@@ -8,7 +8,7 @@ import Image from "next/image";
 import classNames from "classnames";
 import { Button } from "antd";
 import Link from "next/link";
-import { MotionDivFadeDown } from "../../components/motion/MotionDivFadeDown";
+import { MotionDivFadeDown } from "@/components/motion/MotionDivFadeDown";
 
 
 export default function Header() {
@@ -100,7 +100,7 @@ export default function Header() {
   }
 
   return (
-    <>
+    <MotionDivFadeDown>
       <header className={classNames(`fixed py-8 flex items-center w-full z-50 transition-all duration-300`, {
         'translate-y-0': isVisible,
         '-translate-y-full': !isVisible,
@@ -109,7 +109,7 @@ export default function Header() {
         'shadow-lg': showShadow,
       })}>
         {/* Left: Menu button */}
-        <MotionDivFadeDown 
+        <div 
           onClick={() => handleMenuToggle()} 
           className="cursor-pointer p-6 shrink-0"
         >
@@ -121,15 +121,16 @@ export default function Header() {
               <MenuOutlined className="text-2xl" /> <p>MENY</p>
             </div>
           )}
-        </MotionDivFadeDown>
+        </div>
         
         {/* Center: Title */}
-        <MotionDivFadeDown 
+        <div 
           className={classNames("flex-1 flex justify-center items-center", {
             "hidden": isOpen && !isClosing,
           })}
         >
           <Link href="/">
+          {/* // todo: could I get by with just swapping the src here??  */}
             <Image 
               src="/logo-black.png" 
               alt="Logo" 
@@ -151,11 +152,11 @@ export default function Header() {
               })}
             />
           </Link>
-        </MotionDivFadeDown>
+        </div>
         
         {/* Right: Instagram + Contact button */}
         {(!isOpen || isClosing) && (
-          <MotionDivFadeDown 
+          <div 
             className="hidden md:flex space-x-5 mr-10 items-center shrink-0"
           >
             <Link 
@@ -169,15 +170,16 @@ export default function Header() {
             >
               <InstagramOutlined className="text-2xl" />
             </Link>
-            <Button 
-              type="primary" 
-              href="/contact" 
-              size="large"
-              shape="round"
-            >
-              Kontakt oss
-            </Button>
-          </MotionDivFadeDown>
+            <Link href="/contact">
+              <Button 
+                type="primary" 
+                size="large"
+                shape="round"
+              >
+                Kontakt oss
+              </Button>
+            </Link>
+          </div>
         )}      
       </header>
 
@@ -212,6 +214,6 @@ export default function Header() {
           </div>
         </div>
       )}
-    </>
+    </MotionDivFadeDown>
   )
 }
