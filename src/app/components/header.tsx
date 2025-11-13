@@ -129,7 +129,7 @@ export default function Header() {
             "hidden": isOpen && !isClosing,
           })}
         >
-          <Link href="/">
+          <Link href="/" className="w-45 lg:w-full">
           {/* // todo: could I get by with just swapping the src here??  */}
             <Image 
               src="/logo-black.png" 
