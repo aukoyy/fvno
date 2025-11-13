@@ -19,7 +19,7 @@ export default function Header() {
   const [showShadow, setShowShadow] = useState(false);
   const pathname = usePathname();
   
-  const whiteThemePages = ['/', '/event', '/wedding'];
+  const whiteThemePages = ['/', '/event'];
   const isWhiteThemePage = whiteThemePages.includes(pathname);
 
   useEffect(() => {
@@ -117,7 +117,12 @@ export default function Header() {
         {/* Left: Menu button */}
         <div onClick={() => handleMenuToggle()} className="cursor-pointer p-6 shrink-0">
           {!(isOpen && !isClosing) && (
-            <div className="flex space-x-2 hover:text-fv-200"><MenuOutlined className="text-2xl" /> <p>MENY</p></div>
+            <div className={classNames("flex space-x-2 transition-colors duration-200", {
+              "text-white hover:text-fv-200": isWhiteThemePage && !showHeader,
+              "text-fv-900 hover:text-fv-700": !isWhiteThemePage || showHeader,
+            })}>
+              <MenuOutlined className="text-2xl" /> <p>MENY</p>
+            </div>
           )}
         </div>
         
