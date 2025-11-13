@@ -27,12 +27,14 @@ export async function sendContactEmail(formData: {
       return { success: false, error: 'Missing required fields' };
     }
 
-    console.log('Attempting to send email with Resend...');
+    // console.log('Attempting to send email with Resend...');
 
     // Send email using Resend
+    const environment = process.env.NODE_ENV || 'development';
+    const recipientEmail = environment === 'production' ? 'admin@fullvase.com' : 'oyvind.auk@gmail.com';
     const result = await resend.emails.send({
       from: 'contact@resend.dev',
-      to: 'oyvind.auk@gmail.com',
+      to: recipientEmail,
       subject: 'Ny henvendelse fra nettsiden 🎉',
       html: `
         <h2>Ny henvendelse fra nettsiden</h2>
@@ -45,7 +47,7 @@ export async function sendContactEmail(formData: {
       `,
     });
 
-    console.log('Email sent successfully:', result);
+    // console.log('Email sent successfully:', result);
     return { success: true };
   } catch (error) {
     console.error('Detailed error sending email:', error);

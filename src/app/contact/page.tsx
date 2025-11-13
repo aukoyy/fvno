@@ -1,17 +1,21 @@
 'use client';
 
 import Image from "next/image";
-import { Button, DatePicker, Form, FormProps, Input, App } from "antd";
+import { Button, DatePicker, Form, FormProps, Input } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import { sendContactEmail } from "../actions/contact";
 import { Dayjs } from 'dayjs';
+import { useEffect, useState } from 'react';
+import { motion } from "motion/react"
 
 const dateFormat = 'DD.MM.YYYY';
 
 
 export default function Contact() {
   const [form] = Form.useForm();
-  const { message } = App.useApp();
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSubmitSuccess, setIsSubmitSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   
   type FieldType = {
     firstName?: string;
@@ -22,12 +26,21 @@ export default function Contact() {
     message?: string;
   };
 
+  /* useEffect(() => {
+    setTimeout(() => {
+      setIsSubmitSuccess(true);
+    }, 5000);
+  }, []); */
+
   const onFinish: FormProps<FieldType>['onFinish'] = async (values) => {
-    console.log('Success:', values);
+    // console.log('Success:', values);
+    setIsLoading(true);
+    setErrorMessage(''); // Clear any previous errors
+    setIsSubmitSuccess(false); // Clear any previous success
     
     try {
       // Show loading message
-      message.loading('Sender melding...', 0);
+      // message.loading('Sender melding...', 0);
 
       // Format the date to string before sending to server action
       const formattedData = {
@@ -43,25 +56,34 @@ export default function Contact() {
       const result = await sendContactEmail(formattedData);
 
       // Hide loading message
-      message.destroy();
+      // message.destroy();
 
       if (result.success) {
-        message.success('Takk for henvendelsen! Vi tar kontakt snart.');
+        // message.success('Takk for henvendelsen! Vi tar kontakt snart.');
+        setIsSubmitSuccess(true);
+        setIsLoading(false);
         form.resetFields();
+        // Hide success message after 5 seconds
+        setTimeout(() => setIsSubmitSuccess(false), 5000);
       } else {
+        setIsLoading(false);
         console.error('Server action failed:', result.error);
-        message.error(result.error || 'Noe gikk galt. Prøv igjen senere.');
+        setErrorMessage(result.error || 'Noe gikk galt. Prøv igjen senere.');
+        // message.error(result.error || 'Noe gikk galt. Prøv igjen senere.');
       }
     } catch (error) {
-      message.destroy();
+      setIsLoading(false);
+      // message.destroy();
       console.error('Client error:', error);
-      message.error('Noe gikk galt. Prøv igjen senere.');
+      setErrorMessage('Noe gikk galt. Prøv igjen senere.');
+      // message.error('Noe gikk galt. Prøv igjen senere.');
     }
   };
 
   const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = () => {
     // console.log('Failed:', errorInfo);
-    message.error('Vennligst fyll ut alle påkrevde felt korrekt.');
+    setErrorMessage('Vennligst fyll ut alle påkrevde felt korrekt.');
+    setIsLoading(false);
   };
 
 
@@ -161,8 +183,37 @@ export default function Contact() {
               </div>
 
               <div className="flex justify-end mt-12">
-                <Form.Item label={null}>
-                  <Button type="primary" htmlType="submit" shape="round" size="large">
+                {/* Messages container - takes available space */}
+                <div className="flex-1 mr-4">
+                  {isSubmitSuccess && (
+                    <motion.div 
+                      initial={{ opacity: 0, y: -20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.5, ease: "easeOut" }}
+                    >
+                      <p className="text-green-600 font-medium text-center bg-green-50 border border-green-200 rounded-md py-2 px-4">
+                        ✓ Melding sendt! Vi tar kontakt snart.
+                      </p>
+                    </motion.div>
+                  )}
+                  {errorMessage && (
+                    <motion.div 
+                      initial={{ opacity: 0, y: -20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.5, ease: "easeOut" }}
+                    >
+                      <p className="text-red-600 font-medium text-center bg-red-50 border border-red-200 rounded-md py-2 px-4">
+                        ✗ {errorMessage}
+                      </p>
+                    </motion.div>
+                  )}
+                </div>
+                
+                {/* Button - always on the right */}
+                <Form.Item label={null} className="">
+                  <Button type="primary" htmlType="submit" shape="round" size="large" loading={isLoading}>
                     Send melding
                   </Button>
                 </Form.Item>
