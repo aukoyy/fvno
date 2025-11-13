@@ -34,7 +34,7 @@ export async function sendContactEmail(formData: {
     const recipientEmail = environment === 'production' ? 'hei@fullvase.no' : 'oyvind.auk@gmail.com';
     console.log(`Sending email to: ${recipientEmail} (Environment: ${environment})`);
     const result = await resend.emails.send({
-      from: 'contact@resend.dev',
+      from: 'admin@fullvase.no',
       to: recipientEmail,
       subject: 'Ny henvendelse fra nettsiden 🎉',
       html: `
