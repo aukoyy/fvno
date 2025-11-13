@@ -29,7 +29,7 @@ export default function Contact() {
   useEffect(() => {
     setTimeout(() => {
       setIsSubmitSuccess(true);
-    }, 5000);
+    }, 2000);
   }, []);
 
   const onFinish: FormProps<FieldType>['onFinish'] = async (values) => {
@@ -182,9 +182,14 @@ export default function Contact() {
                 </Form.Item>
               </div>
 
-              <div className="flex justify-end mt-12">
-                {/* Messages container - takes available space */}
-                <div className="flex-1 mr-4">
+              <div className="md:flex md:flex-row-reverse md:justify-between text-end pb-8">
+                <Form.Item label={null} className="">
+                  <Button type="primary" htmlType="submit" shape="round" size="large" loading={isLoading}>
+                    Send melding
+                  </Button>
+                </Form.Item>
+
+                <div className="">
                   {isSubmitSuccess && (
                     <motion.div 
                       initial={{ opacity: 0, y: -20 }}
@@ -211,12 +216,7 @@ export default function Contact() {
                   )}
                 </div>
                 
-                {/* Button - always on the right */}
-                <Form.Item label={null} className="">
-                  <Button type="primary" htmlType="submit" shape="round" size="large" loading={isLoading}>
-                    Send melding
-                  </Button>
-                </Form.Item>
+                
               </div>
             </Form>
             </div>
