@@ -8,6 +8,7 @@ import Image from "next/image";
 import classNames from "classnames";
 import { Button } from "antd";
 import Link from "next/link";
+import { motion } from "motion/react";
 
 
 export default function Header() {
@@ -108,7 +109,13 @@ export default function Header() {
         'shadow-lg': showShadow,
       })}>
         {/* Left: Menu button */}
-        <div onClick={() => handleMenuToggle()} className="cursor-pointer p-6 shrink-0">
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeIn", delay: 0.1 }}
+          onClick={() => handleMenuToggle()} 
+          className="cursor-pointer p-6 shrink-0"
+        >
           {!(isOpen && !isClosing) && (
             <div className={classNames("flex space-x-2 transition-colors duration-200", {
               "text-white hover:text-fv-200": isWhiteThemePage && !showHeader,
@@ -117,12 +124,17 @@ export default function Header() {
               <MenuOutlined className="text-2xl" /> <p>MENY</p>
             </div>
           )}
-        </div>
+        </motion.div>
         
         {/* Center: Title */}
-        <div className={classNames("flex-1 flex justify-center items-center", {
-          "hidden": isOpen && !isClosing,
-        })}>
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeIn", delay: 0.1 }}
+          className={classNames("flex-1 flex justify-center items-center", {
+            "hidden": isOpen && !isClosing,
+          })}
+        >
           <Link href="/">
             <Image 
               src="/logo-black.png" 
@@ -145,7 +157,11 @@ export default function Header() {
               })}
             />
           </Link>
-          <div className="absolute right-10 md:flex space-x-5 hidden">
+        </motion.div>
+        
+        {/* Right: Instagram + Contact button */}
+        {(!isOpen || isClosing) && (
+          <div className="hidden md:flex space-x-5 mr-10 items-center shrink-0">
             <Link 
               href="https://www.instagram.com/fullvase.no/" 
               className={classNames("flex items-center transition-colors duration-200", {
@@ -166,11 +182,7 @@ export default function Header() {
               Kontakt oss
             </Button>
           </div>
-        </div>
-        
-        {/* Right: Empty space for balance */}
-        <div className="shrink-0 w-24"></div>
-      </header>
+        )}      </header>
 
       {/* Menu Overlay with Image Background - render when open or closing */}
       {(isOpen || isClosing) && (
