@@ -23,13 +23,6 @@ export default function Header() {
   const isWhiteThemePage = whiteThemePages.includes(pathname);
 
   useEffect(() => {
-    console.log('Initial showHeader state:', showHeader);
-      // setShowHeader(true);
-      // setShowShadow(true);
-  }, [showHeader]);
-  
-  useEffect(() => {
-    console.log('showHeader:', showHeader);
     const controlHeader = () => {
       const currentScrollY = window.scrollY;
       
