@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { motion } from "motion/react";
+import { usePathname } from "next/navigation";
 
 interface NavProps {
   setIsOpen: (isOpen: boolean) => void;
@@ -14,6 +16,11 @@ interface NavGroup {
 }
 
 export default function Nav({ setIsOpen }: NavProps) {
+  const pathname = usePathname();
+  const handleLinkClick = () => {
+    setTimeout(() => setIsOpen(false), 150);
+  }
+  
   const navGroups: NavGroup[] = [
     {
       items: [
@@ -32,15 +39,38 @@ export default function Nav({ setIsOpen }: NavProps) {
     }
   ];
 
-  const NavLink = ({ href, label }: NavItem) => (
-    <Link 
-      href={href}
-      className='block transition-colors my-4 text-white! hover:text-fv-200!'
-      onClick={() => setIsOpen(false)}
-    >
-      {label}
-    </Link>
-  );
+  const NavLink = ({ href, label }: NavItem) => {
+    const isActive = pathname === href;
+    
+    return (
+      <Link 
+        href={href}
+        className='block transition-colors my-4 text-white! hover:text-fv-200! relative'
+        onClick={handleLinkClick}
+      >
+        <motion.span
+          className="relative inline-block"
+          whileHover="hover"
+          initial="initial"
+          variants={{
+            initial: {},
+            hover: {}
+          }}
+        >
+          {label}
+          <motion.div
+            className="absolute bottom-0 left-0 h-0.5 bg-white"
+            variants={{
+              initial: { width: isActive ? "100%" : "0%" },
+              hover: { width: "100%" }
+            }}
+            animate={isActive ? "initial" : undefined}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          />
+        </motion.span>
+      </Link>
+    );
+  };
 
   const NavSection = ({ items }: NavGroup) => (
     <div className='lg:flex justify-between lg:space-x-24 lg:mt-12'>
