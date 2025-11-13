@@ -5,7 +5,7 @@ import { Button, DatePicker, Form, FormProps, Input } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import { sendContactEmail } from "../actions/contact";
 import { Dayjs } from 'dayjs';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { motion } from "motion/react"
 
 const dateFormat = 'DD.MM.YYYY';
@@ -26,23 +26,12 @@ export default function Contact() {
     message?: string;
   };
 
-  useEffect(() => {
-    setTimeout(() => {
-      setIsSubmitSuccess(true);
-    }, 2000);
-  }, []);
-
   const onFinish: FormProps<FieldType>['onFinish'] = async (values) => {
-    // console.log('Success:', values);
     setIsLoading(true);
-    setErrorMessage(''); // Clear any previous errors
-    setIsSubmitSuccess(false); // Clear any previous success
+    setErrorMessage('');
+    setIsSubmitSuccess(false);
     
     try {
-      // Show loading message
-      // message.loading('Sender melding...', 0);
-
-      // Format the date to string before sending to server action
       const formattedData = {
         firstName: values.firstName!,
         lastName: values.lastName!,
@@ -52,36 +41,26 @@ export default function Contact() {
         message: values.message,
       };
 
-      // Call server action
       const result = await sendContactEmail(formattedData);
 
-      // Hide loading message
-      // message.destroy();
-
       if (result.success) {
-        // message.success('Takk for henvendelsen! Vi tar kontakt snart.');
         setIsSubmitSuccess(true);
         setIsLoading(false);
         form.resetFields();
-        // Hide success message after 5 seconds
-        setTimeout(() => setIsSubmitSuccess(false), 5000);
+        setTimeout(() => setIsSubmitSuccess(false), 8000);
       } else {
         setIsLoading(false);
         console.error('Server action failed:', result.error);
         setErrorMessage(result.error || 'Noe gikk galt. Prøv igjen senere.');
-        // message.error(result.error || 'Noe gikk galt. Prøv igjen senere.');
       }
     } catch (error) {
       setIsLoading(false);
-      // message.destroy();
       console.error('Client error:', error);
       setErrorMessage('Noe gikk galt. Prøv igjen senere.');
-      // message.error('Noe gikk galt. Prøv igjen senere.');
     }
   };
 
   const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = () => {
-    // console.log('Failed:', errorInfo);
     setErrorMessage('Vennligst fyll ut alle påkrevde felt korrekt.');
     setIsLoading(false);
   };
@@ -143,7 +122,7 @@ export default function Contact() {
                   name="email"
                   rules={[
                     { required: true, message: 'Venligst oppgi e-post' },
-                    // { type: 'email', message: 'Venligst oppgi en gyldig e-postadresse' }
+                    { type: 'email', message: 'Venligst oppgi en gyldig e-postadresse' }
                   ]}
                   className="w-full"
                 >
@@ -183,13 +162,13 @@ export default function Contact() {
               </div>
 
               <div className="md:flex md:flex-row-reverse md:justify-between text-end pb-8">
-                <Form.Item label={null} className="">
+                <Form.Item label={null}>
                   <Button type="primary" htmlType="submit" shape="round" size="large" loading={isLoading}>
                     Send melding
                   </Button>
                 </Form.Item>
 
-                <div className="">
+                <div>
                   {isSubmitSuccess && (
                     <motion.div 
                       initial={{ opacity: 0, y: -20 }}
