@@ -31,7 +31,7 @@ export async function sendContactEmail(formData: {
 
     // Send email using Resend
     const environment = process.env.NODE_ENV || 'development';
-    const recipientEmail = environment === 'production' ? 'admin@fullvase.com' : 'oyvind.auk@gmail.com';
+    const recipientEmail = environment === 'production' ? 'admin@fullvase.no' : 'oyvind.auk@gmail.com';
     const result = await resend.emails.send({
       from: 'contact@resend.dev',
       to: recipientEmail,
