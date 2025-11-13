@@ -32,7 +32,7 @@ export default function Header() {
           if (currentScrollY > 50) {
             setTimeout(() => {
               if (window.scrollY > 50) {
-                console.log('Setting showHeader to true from scroll up');
+                // console.log('Setting showHeader to true from scroll up');
                 setShowHeader(true);
                 setShowShadow(true);
               }
@@ -47,7 +47,7 @@ export default function Header() {
           setShowShadow(false);
         }
       } else {
-        console.log('Setting showHeader to true for non-white theme page');
+        // console.log('Setting showHeader to true for non-white theme page');
         setShowHeader(true);
         setShowShadow(currentScrollY > 10); 
       }

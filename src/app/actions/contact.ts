@@ -31,7 +31,8 @@ export async function sendContactEmail(formData: {
 
     // Send email using Resend
     const environment = process.env.NODE_ENV || 'development';
-    const recipientEmail = environment === 'production' ? 'admin@fullvase.no' : 'oyvind.auk@gmail.com';
+    const recipientEmail = environment === 'production' ? 'hei@fullvase.no' : 'oyvind.auk@gmail.com';
+    console.log(`Sending email to: ${recipientEmail} (Environment: ${environment})`);
     const result = await resend.emails.send({
       from: 'contact@resend.dev',
       to: recipientEmail,
@@ -46,8 +47,7 @@ export async function sendContactEmail(formData: {
         <p>${message || 'Ingen melding'}</p>
       `,
     });
-
-    // console.log('Email sent successfully:', result);
+    console.log('Email sent successfully:', result);
     return { success: true };
   } catch (error) {
     console.error('Detailed error sending email:', error);

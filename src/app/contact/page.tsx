@@ -26,11 +26,11 @@ export default function Contact() {
     message?: string;
   };
 
-  /* useEffect(() => {
+  useEffect(() => {
     setTimeout(() => {
       setIsSubmitSuccess(true);
     }, 5000);
-  }, []); */
+  }, []);
 
   const onFinish: FormProps<FieldType>['onFinish'] = async (values) => {
     // console.log('Success:', values);
