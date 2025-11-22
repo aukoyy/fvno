@@ -43,7 +43,7 @@ export default function AboutPage() {
           <p className="leading-loose">
             Du finner Full Vase på Instagram, TIK TOK, Facebook og LinkedIn (TIPS: mest aktiv på Instagram)! Følg oss gjerne der for oppdateringer, behind-the-scene, samt bilder og videoer fra nylige blomsterleveringer &lt;3
           </p>
-          <Button type="link" href="https://www.instagram.com/fullvase.no/" size="large" className="underline! font-bold! mt-6">
+          <Button target="_blank" type="link" href="https://www.instagram.com/fullvase.no/" size="large" className="underline! font-bold! mt-6">
             Ta meg til instagram
           </Button>
         </div>
@@ -58,13 +58,15 @@ export default function AboutPage() {
         </div>
       </div>
 
-      <div className="flex justify-center py-56">
-        <div className="bg-fv-200 max-w-5xl border-6 border-fv-250 text-center">
-          <h2 className="text-5xl">Det ligger i navnet</h2>
-          <p>Full Vase skaper blomsterdekorasjoner til bryllup, events og selskaper - fra frodige installasjoner til delikate bordoppsatser.</p>
-          <p>Vi tilpasser uttrykket etter sesong, lokale og visjon, og sørger for at blomstrene blir en naturlig del av helhetsopplevelsen.</p>
-          <p>Enten du planlegger et storslått arrangement eller en intim feiring, hjelper vi deg å skape stemning med blomster.</p>
-          <p>Vi fyller vasen og atmosfæren med blomster &lt;3</p>
+      <div className="flex justify-center py-24">
+        <div className="bg-fv-200  border-6 border-fv-250 text-center py-16 px-6 md:px-24 mx-4">
+          <h2 className="text-4xl font-sans font-semibold italic">Det ligger i navnet</h2>
+          <div className="space-y-8 my-12 max-w-xl">
+            <p>Full Vase skaper blomsterdekorasjoner til bryllup, events og selskaper - fra frodige installasjoner til delikate bordoppsatser.</p>
+            <p>Vi tilpasser uttrykket etter sesong, lokale og visjon, og sørger for at blomstrene blir en naturlig del av helhetsopplevelsen.</p>
+            <p>Enten du planlegger et storslått arrangement eller en intim feiring, hjelper vi deg å skape stemning med blomster.</p>
+            <p>Vi fyller vasen og atmosfæren med blomster &lt;3</p>
+          </div>
         </div>
       </div>
       

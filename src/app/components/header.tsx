@@ -130,26 +130,13 @@ export default function Header() {
           })}
         >
           <Link href="/" className="w-45 lg:w-72">
-          {/* // todo: could I get by with just swapping the src here??  */}
-            <Image
-              src="/logo-black.png" 
-              alt="Logo" 
-              width={250} 
-              height={100} 
-              style={{ width: "auto", height: "auto" }}
-              className={classNames("transition-opacity duration-300", {
-                "hidden": isWhiteThemePage && !showHeader,
-              })}
-            />
             <Image 
-              src="/logo-white.png" 
+              src={isWhiteThemePage && !showHeader ? "/logo-white.png" : "/logo-black.png"}
               alt="Logo" 
               width={250} 
               height={100} 
               style={{ width: "auto", height: "auto" }}
-              className={classNames("transition-opacity duration-300", {
-                "hidden": !isWhiteThemePage || showHeader,
-              })}
+              className={classNames("transition-opacity duration-300")}
             />
           </Link>
         </div>

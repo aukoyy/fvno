@@ -31,7 +31,7 @@ export default function Nav({ setIsOpen }: NavProps) {
     },
     {
       items: [
-        // { href: '/about', label: 'Om oss' },
+        { href: '/about', label: 'Om oss' },
         // { href: '/portfolio', label: 'Portefølje' },
         // { href: '/faq', label: 'FAQ' },
         { href: '/contact', label: 'Kontakt' }
