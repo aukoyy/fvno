@@ -33,7 +33,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flex justify-center lg:my-12">
+        {/* <div className="flex justify-center lg:my-12">
           <div className="lg:max-w-9xl ">
             <Image 
               src="/landing/julekranskurs.png"
@@ -55,7 +55,7 @@ export default function Home() {
               </Button>
             </div>
           </div>
-        </div>
+        </div> */}
         
         <div className="py-16 md:py-24 bg-fv-250 flex flex-col items-center">
           <p className="text-2xl md:text-6xl font-light text-center mx-18 max-w-4xl leading-relaxed md:leading-snug">Blomster du <i>faktisk</i> synes er skikkelig vakre. Vi designer din visjon til ditt event eller bryllup.</p>
