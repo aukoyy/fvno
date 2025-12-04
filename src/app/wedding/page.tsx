@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function WeddingPage() {
   return (
-    <main className="font-serif">
+    <main className="font-serif mb-24">
       <div className="relative w-screen h-screen flex items-center justify-center bg-black/30">
         <Image
           src="/wedding/bridal-girl-flowers.jpg"
@@ -39,35 +39,60 @@ export default function WeddingPage() {
         </div>
       </div>
 
-      <div className="mt-24 md:mt-32 mx-12 flex flex-col items-center">
-          <div className="lg:flex justify-between items-center space-x-24">
+      <div className="mt-24 lg:mt-32 mx-12 flex flex-col items-center">
+          <div className="flex flex-col lg:flex-row lg:justify-between lg:gap-80 items-center max-w-5xl">
             <Image
-              src="/wedding/logo-gold.png"
+              src="/wedding/logo-gold-crop.png"
               alt=""
-              width={1000}
-              height={1000}
-              className="object-cover md:h-120 -mt-24"
+              width={500}
+              height={500}
+              className="object-cover w-80 lg:-mt-24 mx-auto lg:mx-0"
             />
             <Image
               src="/wedding/bryllup-detaljer.jpg"
               alt=""
-              width={1000}
-              height={1000}
-              className="object-cover md:w-100 mx-auto"
+              width={500}
+              height={500}
+              className="w-80 object-cover mt-12 lg:mt-0 mx-auto lg:mx-0"
             />
         </div>
-        <div className="">
+        <div className="w-full max-w-5xl flex justify-center lg:justify-start">
           <Image
             src="/wedding/gl-bryllup2.jpg"
             alt=""
             width={1000}
             height={1000}
-            className="mt-12 lg:-mt-12 md:w-130 object-cover"
+            className="mt-12 lg:-mt-12 md:w-130"
           />
         </div>
       </div>
 
-      <div className="mt-56"></div>
+      <div className="max-w-7xl mx-auto hidden md:flex  justify-center mt-52">
+        <Image
+          src="/wedding/the-process.png"
+          alt="Prosessen"
+          width={3000}
+          height={2000}
+          className="w-200 h-auto object-cover"
+        />
+      </div>
+      <div className="max-w-6xl mx-auto block md:hidden space-y-12 mt-24">
+        <Image
+          src="/wedding/the-process-mobile.png"
+          alt="Prosessen"
+          width={3000}
+          height={2000}
+          className="w-full h-auto object-cover"
+        />
+        <Image
+          src="/wedding/the-process-mobile-2.png"
+          alt="Prosessen"
+          width={3000}
+          height={2000}
+          className="w-full h-auto object-cover"
+        />
+      </div>
+
     </main>
   );
 }
