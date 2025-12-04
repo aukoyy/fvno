@@ -82,10 +82,10 @@ export default function WeddingPage() {
           <p className="text-xl">Fordi du fortjener å vite akkurat hva du kan forvente</p>
         </div>
         <Image
-          src="/wedding/the-process-mobile-1.png"
+          src="/wedding/the-process-mobile.png"
           alt="Prosessen"
-          width={3000}
-          height={2000}
+          width={1000}
+          height={1000}
           className="w-full h-auto object-cover"
         />
       </div>
