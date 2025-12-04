@@ -1,7 +1,7 @@
 import { motion, MotionProps } from "motion/react";
 import { ReactNode } from "react";
 
-interface MotionDivFadeDownProps extends Omit<MotionProps, 'initial' | 'animate' | 'transition'> {
+interface MotionDivFadeDownProps extends Omit<MotionProps, "initial" | "animate" | "transition"> {
   children: ReactNode;
   delay?: number;
   duration?: number;
@@ -9,13 +9,13 @@ interface MotionDivFadeDownProps extends Omit<MotionProps, 'initial' | 'animate'
   onClick?: () => void;
 }
 
-export const MotionDivFadeDown = ({ 
-  children, 
-  delay = 0.1, 
-  duration = 0.5, 
+export const MotionDivFadeDown = ({
+  children,
+  delay = 0.1,
+  duration = 0.5,
   className,
   onClick,
-  ...motionProps 
+  ...motionProps
 }: MotionDivFadeDownProps) => {
   return (
     <motion.div

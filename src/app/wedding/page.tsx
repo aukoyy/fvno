@@ -6,5 +6,5 @@ export default function WeddingPage() {
       <div className="h-96 border-2 border-blue-500"></div>
       <div className="h-96 border-2 border-amber-500"></div>
     </main>
-  )
+  );
 }

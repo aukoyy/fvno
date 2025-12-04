@@ -1,22 +1,21 @@
-'use client';
+"use client";
 
 import Image from "next/image";
 import { Button, DatePicker, Form, FormProps, Input } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import { sendContactEmail } from "../actions/contact";
-import { Dayjs } from 'dayjs';
-import { useState } from 'react';
-import { motion } from "motion/react"
+import { Dayjs } from "dayjs";
+import { useState } from "react";
+import { motion } from "motion/react";
 
-const dateFormat = 'DD.MM.YYYY';
-
+const dateFormat = "DD.MM.YYYY";
 
 export default function Contact() {
   const [form] = Form.useForm();
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitSuccess, setIsSubmitSuccess] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
-  
+  const [errorMessage, setErrorMessage] = useState("");
+
   type FieldType = {
     firstName?: string;
     lastName?: string;
@@ -26,11 +25,11 @@ export default function Contact() {
     message?: string;
   };
 
-  const onFinish: FormProps<FieldType>['onFinish'] = async (values) => {
+  const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
     setIsLoading(true);
-    setErrorMessage('');
+    setErrorMessage("");
     setIsSubmitSuccess(false);
-    
+
     try {
       const formattedData = {
         firstName: values.firstName!,
@@ -50,28 +49,32 @@ export default function Contact() {
         setTimeout(() => setIsSubmitSuccess(false), 8000);
       } else {
         setIsLoading(false);
-        console.error('Server action failed:', result.error);
-        setErrorMessage(result.error || 'Noe gikk galt. Prøv igjen senere.');
+        console.error("Server action failed:", result.error);
+        setErrorMessage(result.error || "Noe gikk galt. Prøv igjen senere.");
       }
     } catch (error) {
       setIsLoading(false);
-      console.error('Client error:', error);
-      setErrorMessage('Noe gikk galt. Prøv igjen senere.');
+      console.error("Client error:", error);
+      setErrorMessage("Noe gikk galt. Prøv igjen senere.");
     }
   };
 
-  const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = () => {
-    setErrorMessage('Vennligst fyll ut alle påkrevde felt korrekt.');
+  const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = () => {
+    setErrorMessage("Vennligst fyll ut alle påkrevde felt korrekt.");
     setIsLoading(false);
   };
-
 
   return (
     <main className="pt-34 md:text-lg font-serif">
       <div className="text-center mt-16 max-w-lg mx-6 md:mx-auto">
         <h1 className="text-5xl md:text-7xl">La oss snakke blomster!</h1>
-        <p className="mt-12 font-sans">Enten planene er spikret, eller bare i startfasen, gleder vi oss til å høre mer.</p>
-        <p className="mt-12 italic font-extralight font-sans">Del gjerne litt om anledningen du ønsker blomster til nedenfor, så tar vi kontakt for å snakke om tilgjengelighet, uttrykk og neste steg.</p>
+        <p className="mt-12 font-sans">
+          Enten planene er spikret, eller bare i startfasen, gleder vi oss til å høre mer.
+        </p>
+        <p className="mt-12 italic font-extralight font-sans">
+          Del gjerne litt om anledningen du ønsker blomster til nedenfor, så tar vi kontakt for å
+          snakke om tilgjengelighet, uttrykk og neste steg.
+        </p>
       </div>
 
       <div className="mt-16 md:bg-white md:flex md:justify-center mx-8 lg:mx-24">
@@ -97,116 +100,123 @@ export default function Contact() {
                 onFinishFailed={onFinishFailed}
                 autoComplete="off"
               >
-              <div className="sm:flex justify-between gap-4 w-full">
-                <Form.Item<FieldType>
-                  label="Fornavn"
-                  name="firstName"
-                  rules={[{ required: true, message: 'Venligst oppgi fornavn' }]}
-                  className="w-full"
-                >
-                  <Input className="w-full h-12" />
-                </Form.Item>
+                <div className="sm:flex justify-between gap-4 w-full">
+                  <Form.Item<FieldType>
+                    label="Fornavn"
+                    name="firstName"
+                    rules={[{ required: true, message: "Venligst oppgi fornavn" }]}
+                    className="w-full"
+                  >
+                    <Input className="w-full h-12" />
+                  </Form.Item>
 
-                <Form.Item<FieldType>
-                  label="Etternavn"
-                  name="lastName"
-                  rules={[{ required: true, message: 'Venligst oppgi etternavn' }]}
-                  className="w-full"
-                >
-                  <Input className="w-full h-12" />
-                </Form.Item>
-              </div>
-              <div className="sm:flex justify-between gap-4">
-                <Form.Item<FieldType>
-                  label="E-post"
-                  name="email"
-                  rules={[
-                    { required: true, message: 'Venligst oppgi e-post' },
-                    { type: 'email', message: 'Venligst oppgi en gyldig e-postadresse' }
-                  ]}
-                  className="w-full"
-                >
-                  <Input className="w-full h-12" />
-                </Form.Item>
-
-                <Form.Item<FieldType>
-                  label="Mobilnummer"
-                  name="mobile"
-                  className="w-full"
-                  rules={[{ type: 'string', pattern: /^\+?[0-9\s\-]{7,15}$/, message: 'Venligst oppgi et gyldig mobilnummer' }]}
-                >
-                  <Input className="w-full h-12" />
-                </Form.Item>
-              </div>
-              <div className="sm:flex sm:mr-4">
-                <Form.Item<FieldType>
-                  label="Dato"
-                  name="date"
-                  className="w-full md:w-1/2"
-                >
-                  <DatePicker 
-                    className="w-full h-12" 
-                    format={dateFormat}
-                    placeholder="For din anledning"
-
-                  />
-                </Form.Item>
-              </div>
-
-              <div className="mt-8">
-                <Form.Item label="Melding" name="message">
-                  <TextArea
-                    style={{ height: 200 }}
-                  />
-                </Form.Item>
-              </div>
-
-              <div className="md:flex md:flex-row-reverse md:justify-between text-end pb-8">
-                <Form.Item label={null}>
-                  <Button type="primary" htmlType="submit" shape="round" size="large" loading={isLoading}>
-                    Send melding
-                  </Button>
-                </Form.Item>
-
-                <div>
-                  {isSubmitSuccess && (
-                    <motion.div 
-                      initial={{ opacity: 0, y: -20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{ duration: 0.5, ease: "easeOut" }}
-                    >
-                      <p className="text-green-600 font-medium text-center bg-green-50 border border-green-200 rounded-md py-2 px-4">
-                        ✓ Melding sendt! Vi tar kontakt snart.
-                      </p>
-                    </motion.div>
-                  )}
-                  {errorMessage && (
-                    <motion.div 
-                      initial={{ opacity: 0, y: -20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{ duration: 0.5, ease: "easeOut" }}
-                    >
-                      <p className="text-red-600 font-medium text-center bg-red-50 border border-red-200 rounded-md py-2 px-4">
-                        ✗ {errorMessage}
-                      </p>
-                    </motion.div>
-                  )}
+                  <Form.Item<FieldType>
+                    label="Etternavn"
+                    name="lastName"
+                    rules={[{ required: true, message: "Venligst oppgi etternavn" }]}
+                    className="w-full"
+                  >
+                    <Input className="w-full h-12" />
+                  </Form.Item>
                 </div>
-                
-                
-              </div>
-            </Form>
+                <div className="sm:flex justify-between gap-4">
+                  <Form.Item<FieldType>
+                    label="E-post"
+                    name="email"
+                    rules={[
+                      { required: true, message: "Venligst oppgi e-post" },
+                      { type: "email", message: "Venligst oppgi en gyldig e-postadresse" },
+                    ]}
+                    className="w-full"
+                  >
+                    <Input className="w-full h-12" />
+                  </Form.Item>
+
+                  <Form.Item<FieldType>
+                    label="Mobilnummer"
+                    name="mobile"
+                    className="w-full"
+                    rules={[
+                      {
+                        type: "string",
+                        pattern: /^\+?[0-9\s\-]{7,15}$/,
+                        message: "Venligst oppgi et gyldig mobilnummer",
+                      },
+                    ]}
+                  >
+                    <Input className="w-full h-12" />
+                  </Form.Item>
+                </div>
+                <div className="sm:flex sm:mr-4">
+                  <Form.Item<FieldType> label="Dato" name="date" className="w-full md:w-1/2">
+                    <DatePicker
+                      className="w-full h-12"
+                      format={dateFormat}
+                      placeholder="For din anledning"
+                    />
+                  </Form.Item>
+                </div>
+
+                <div className="mt-8">
+                  <Form.Item label="Melding" name="message">
+                    <TextArea style={{ height: 200 }} />
+                  </Form.Item>
+                </div>
+
+                <div className="md:flex md:flex-row-reverse md:justify-between text-end pb-8">
+                  <Form.Item label={null}>
+                    <Button
+                      type="primary"
+                      htmlType="submit"
+                      shape="round"
+                      size="large"
+                      loading={isLoading}
+                    >
+                      Send melding
+                    </Button>
+                  </Form.Item>
+
+                  <div>
+                    {isSubmitSuccess && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.5, ease: "easeOut" }}
+                      >
+                        <p className="text-green-600 font-medium text-center bg-green-50 border border-green-200 rounded-md py-2 px-4">
+                          ✓ Melding sendt! Vi tar kontakt snart.
+                        </p>
+                      </motion.div>
+                    )}
+                    {errorMessage && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.5, ease: "easeOut" }}
+                      >
+                        <p className="text-red-600 font-medium text-center bg-red-50 border border-red-200 rounded-md py-2 px-4">
+                          ✗ {errorMessage}
+                        </p>
+                      </motion.div>
+                    )}
+                  </div>
+                </div>
+              </Form>
             </div>
           </div>
         </div>
       </div>
-      
 
       <div className="max-w-lg mt-18 mb-32 space-y-12 text-center mx-6 md:mx-auto">
-        <p className="font-light text-xl italic">Hold et øye med innboksen, vi tar kontakt snart!</p>
-        <p className="font-sans font-extralight">Vi pleier å svare innen 24 timer (mandag-fredag). Hører du ikke fra oss innen den tid, ta gjerne en titt i søppelpostmappen, bare for sikkerhets skyld.</p>
+        <p className="font-light text-xl italic">
+          Hold et øye med innboksen, vi tar kontakt snart!
+        </p>
+        <p className="font-sans font-extralight">
+          Vi pleier å svare innen 24 timer (mandag-fredag). Hører du ikke fra oss innen den tid, ta
+          gjerne en titt i søppelpostmappen, bare for sikkerhets skyld.
+        </p>
         <p className="font-bold">Vi gleder oss til å høre fra deg!</p>
       </div>
     </main>

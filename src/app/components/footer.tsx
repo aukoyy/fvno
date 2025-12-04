@@ -5,7 +5,9 @@ export default function Footer() {
   return (
     <footer className="bg-fv-250 flex justify-center pb-24">
       <div className="px-12 py-24 max-w-8xl">
-        <p className="text-3xl md:text-6xl font-serif">La din blomsterdekorasjon være nestemanns inspirasjon.</p>
+        <p className="text-3xl md:text-6xl font-serif">
+          La din blomsterdekorasjon være nestemanns inspirasjon.
+        </p>
         <div className="mt-12 md:flex justify-between text-xl">
           <p>Hvilken anledning trenger du blomster til? </p>
           <Link href="/contact">
