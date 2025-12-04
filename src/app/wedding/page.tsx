@@ -76,7 +76,11 @@ export default function WeddingPage() {
           className="w-200 h-auto object-cover"
         />
       </div>
-      <div className="max-w-6xl mx-auto block md:hidden space-y-12 mt-24">
+      <div className="max-w-6xl mx-auto block md:hidden space-y-12 mt-24 text-center">
+        <div className="space-y-6">
+          <h2 className="text-3xl">Slik er prosessen</h2>
+          <p className="text-xl">Fordi du fortjener å vite akkurat hva du kan forvente</p>
+        </div>
         <Image
           src="/wedding/the-process-mobile.png"
           alt="Prosessen"
