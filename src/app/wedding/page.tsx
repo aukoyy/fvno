@@ -40,21 +40,21 @@ export default function WeddingPage() {
       </div>
 
       <div className="mt-24 lg:mt-32 mx-12 flex flex-col items-center">
-          <div className="flex flex-col lg:flex-row lg:justify-between lg:gap-80 items-center max-w-5xl">
-            <Image
-              src="/wedding/logo-gold-crop.png"
-              alt=""
-              width={500}
-              height={500}
-              className="object-cover w-80 lg:-mt-24 mx-auto lg:mx-0"
-            />
-            <Image
-              src="/wedding/bryllup-detaljer.jpg"
-              alt=""
-              width={500}
-              height={500}
-              className="w-80 object-cover mt-12 lg:mt-0 mx-auto lg:mx-0"
-            />
+        <div className="flex flex-col lg:flex-row lg:justify-between lg:gap-80 items-center max-w-5xl">
+          <Image
+            src="/wedding/logo-gold-crop.png"
+            alt=""
+            width={500}
+            height={500}
+            className="object-cover w-80 lg:-mt-24 mx-auto lg:mx-0"
+          />
+          <Image
+            src="/wedding/bryllup-detaljer.jpg"
+            alt=""
+            width={500}
+            height={500}
+            className="w-80 object-cover mt-12 lg:mt-0 mx-auto lg:mx-0"
+          />
         </div>
         <div className="w-full max-w-5xl flex justify-center lg:justify-start">
           <Image
@@ -89,7 +89,6 @@ export default function WeddingPage() {
           className="w-full h-auto object-cover"
         />
       </div>
-
     </main>
   );
 }

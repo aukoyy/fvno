@@ -3,24 +3,24 @@
 import { Masonry } from "antd";
 import Image from "next/image";
 
-
 export default function Portfolio() {
   const gallerySliderImages = [
-    '/portfolio/gallery-1.jpg',
-    '/portfolio/gallery-2.jpg',
-    '/portfolio/gallery-3.jpg',
-    '/portfolio/gallery-4.jpg',
-    '/portfolio/gallery-5.jpg',
-  ]
-  const brickWallImages = Array.from({ length: 29 }, (_, i) => `/portfolio/wall/brick-${i + 1}.jpg`);
+    "/portfolio/gallery-1.jpg",
+    "/portfolio/gallery-2.jpg",
+    "/portfolio/gallery-3.jpg",
+    "/portfolio/gallery-4.jpg",
+    "/portfolio/gallery-5.jpg",
+  ];
+  const brickWallImages = Array.from(
+    { length: 29 },
+    (_, i) => `/portfolio/wall/brick-${i + 1}.jpg`
+  );
 
   return (
     <main className="pt-34 md:text-lg font-serif mb-32">
       <div className="text-center mt-16 max-w-lg mx-6 sm:mx-auto">
         <h1 className="text-5xl md:text-7xl">Portefølje</h1>
-        <p className="mt-12 font-sans">
-          Utforsk våre tidligere blomsterdekorasjoner.
-        </p>
+        <p className="mt-12 font-sans">Utforsk våre tidligere blomsterdekorasjoner.</p>
       </div>
 
       {/* Small centered vertical line */}
@@ -46,8 +46,6 @@ export default function Portfolio() {
         </div>
       </div>
 
-      
-      
       <div className="mx-6 mt-32">
         <Masonry
           columns={{ xs: 1, sm: 2, lg: 3, xxl: 4 }}
@@ -56,12 +54,8 @@ export default function Portfolio() {
             key: `item-${index}`,
             data: img,
           }))}
-          itemRender={({ data }) => (
-            <Image 
-              src={data} alt="grid-image" width={535} height={350} 
-            />
-          )}
-          />
+          itemRender={({ data }) => <Image src={data} alt="grid-image" width={535} height={350} />}
+        />
       </div>
     </main>
   );
