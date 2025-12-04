@@ -130,7 +130,7 @@ export default function Header() {
         </div>
 
         {/* Center: Title */}
-        <div className={classNames("flex-1 flex justify-center items-center", {})}>
+        <div className="absolute left-1/2 transform -translate-x-1/2">
           <Link href="/" className="w-45 lg:w-72">
             <Image
               src={isWhiteThemePage && !showHeader ? "/logo-white.png" : "/logo-black.png"}
@@ -143,8 +143,10 @@ export default function Header() {
           </Link>
         </div>
 
-        {/* Right: Instagram + Contact button */}
+        {/* Spacer to push right content to the end */}
+        <div className="flex-1"></div>
 
+        {/* Right: Instagram + Contact button */}
         <div className="hidden md:flex space-x-5 mr-10 items-center shrink-0">
           <Link
             href="https://www.instagram.com/fullvase.no/"
