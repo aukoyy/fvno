@@ -180,7 +180,7 @@ export default function Header() {
           <div className={`w-full h-full ${isClosing ? '' : 'animate-clip-reveal'}`}>
             {/* Stationary background image */}
             <div 
-              className="w-full h-full bg-cover bg-center bg-no-repeat"
+              className="w-full h-full bg-cover bg-center bg-no-repeat transition-all duration-500 ease-in-out"
               style={{
                 backgroundImage: `url(${backgroundImage})`,
               }}
