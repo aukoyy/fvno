@@ -48,7 +48,18 @@ export default function Nav({ setIsOpen, setBackgroundImage }: NavProps) {
     if (currentItem?.imageSrc) {
       setBackgroundImage(currentItem.imageSrc);
     }
-  }, [pathname, setBackgroundImage, navGroups]);  
+  }, [pathname, setBackgroundImage, navGroups]);
+
+  // Preload all navigation images when component mounts to prevent flash
+  useEffect(() => {
+    const allItems = navGroups.flatMap(group => group.items);
+    const imageSources = allItems.map(item => item.imageSrc).filter(Boolean) as string[];
+    
+    imageSources.forEach((src) => {
+      const img = new window.Image();
+      img.src = src;
+    });
+  }, [navGroups]);  
   
   const NavItem = ({ href, label, imageSrc }: NavItemProps) => {
     const isActive = pathname === href;
