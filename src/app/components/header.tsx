@@ -20,7 +20,7 @@ export default function Header() {
   const [backgroundImage, setBackgroundImage] = useState<string>("/nav/workshop-girls.jpg");
   const pathname = usePathname();
 
-  const whiteThemePages = ["/", "/event"];
+  const whiteThemePages = ["/", "/event", "/wedding"];
   const isWhiteThemePage = whiteThemePages.includes(pathname);
 
   useEffect(() => {

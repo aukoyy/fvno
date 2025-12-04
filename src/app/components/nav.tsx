@@ -30,7 +30,7 @@ export default function Nav({ setIsOpen, setBackgroundImage }: NavProps) {
         items: [
           { href: "/", label: "Hjem", imageSrc: "/nav/workshop-girls.jpg" },
           { href: "/event", label: "Event og anledning", imageSrc: "/nav/gl-event.jpg" },
-          { href: "/bryllup", label: "Bryllup", imageSrc: "/nav/proposal.jpg" },
+          { href: "/wedding", label: "Bryllup", imageSrc: "/nav/proposal.jpg" },
         ],
       },
       {
