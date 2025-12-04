@@ -4,18 +4,20 @@ import { usePathname } from "next/navigation";
 
 interface NavProps {
   setIsOpen: (isOpen: boolean) => void;
+  setBackgroundImage: (imageSrc: string) => void;
 }
 
 interface NavItem {
   href: string;
   label: string;
+  imageSrc?: string;
 }
 
 interface NavGroup {
   items: NavItem[];
 }
 
-export default function Nav({ setIsOpen }: NavProps) {
+export default function Nav({ setIsOpen, setBackgroundImage }: NavProps) {
   const pathname = usePathname();
   const handleLinkClick = () => {
     setTimeout(() => setIsOpen(false), 200);
@@ -24,22 +26,21 @@ export default function Nav({ setIsOpen }: NavProps) {
   const navGroups: NavGroup[] = [
     {
       items: [
-        { href: '/', label: 'Hjem' },
-        { href: '/event', label: 'Event og anledning' },
-        // { href: '/bryllup', label: 'Bryllup' }
+        { href: '/', label: 'Hjem', imageSrc: '/nav/workshop-girls.jpg' },
+        { href: '/event', label: 'Event og anledning', imageSrc: '/nav/gl-event.jpg' },
+        { href: '/bryllup', label: 'Bryllup', imageSrc: '/nav/proposal.jpg' }
       ]
     },
     {
       items: [
-        { href: '/about', label: 'Om oss' },
-        // { href: '/portfolio', label: 'Portefølje' },
-        // { href: '/faq', label: 'FAQ' },
-        { href: '/contact', label: 'Kontakt' }
+        { href: '/about', label: 'Om oss', imageSrc: '/nav/details-workshop.jpg' },
+        { href: '/portfolio', label: 'Portefølje', imageSrc: '/nav/pumpkins.jpg' },
+        { href: '/contact', label: 'Kontakt', imageSrc: '/nav/workshop-girls.jpg' }
       ]
     }
   ];
 
-  const NavLink = ({ href, label }: NavItem) => {
+  const NavLink = ({ href, label, imageSrc }: NavItem) => {
     const isActive = pathname === href;
     
     return (
@@ -47,6 +48,11 @@ export default function Nav({ setIsOpen }: NavProps) {
         href={href}
         className='block transition-colors my-4 text-white! hover:text-fv-200! relative'
         onClick={handleLinkClick}
+        onMouseEnter={() => {
+          if (imageSrc) {
+            setBackgroundImage(imageSrc);
+          }
+        }}
       >
         <motion.span
           className="relative inline-block"
@@ -81,7 +87,7 @@ export default function Nav({ setIsOpen }: NavProps) {
   );
 
   return (
-    <nav className="lg:flex text-2xl md:text-3xl lg:text-6xl lg:space-x-24 font-serif">
+    <nav className="text-2xl md:text-3xl xl:text-6xl font-serif">
       {navGroups.map((group, index) => (
         <NavSection key={index} {...group} />
       ))}

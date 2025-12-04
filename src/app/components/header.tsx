@@ -18,6 +18,7 @@ export default function Header() {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [showHeader, setShowHeader] = useState(false); // Start transparent for white theme pages
   const [showShadow, setShowShadow] = useState(false);
+  const [backgroundImage, setBackgroundImage] = useState<string>('/nav/workshop-girls.jpg');
   const pathname = usePathname();
   
   const whiteThemePages = ['/', '/event'];
@@ -181,13 +182,13 @@ export default function Header() {
             <div 
               className="w-full h-full bg-cover bg-center bg-no-repeat"
               style={{
-                backgroundImage: 'url(/nav/workshop-girls.jpg)',
+                backgroundImage: `url(${backgroundImage})`,
               }}
             >
               {/* Menu Content */}
               <div className="flex items-center justify-center h-full bg-black/55">
                 <div className={`text-center text-white ${isClosing ? '' : 'animate-fade-in'}`}>
-                  <Nav setIsOpen={setIsOpen} />
+                  <Nav setIsOpen={setIsOpen} setBackgroundImage={setBackgroundImage} />
                 </div>
               </div>
             </div>
