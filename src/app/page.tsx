@@ -40,30 +40,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* <div className="flex justify-center lg:my-12">
-          <div className="lg:max-w-9xl ">
-            <Image 
-              src="/landing/julekranskurs.png"
-              alt="Julekranskurs på Mathallen"
-              width={2920}
-              height={2080}
-              className="w-full h-auto object-cover"
-            />
-            <div className="justify-around hidden md:flex">
-              <span></span>
-              <Button type="primary" target="_blank" href="https://fullvase.makeplans.com/events/42152" size="large" className="-m-20 bg-green-900! font-bold! hover:bg-green-800!">
-                Book nå!
-              </Button>
-            </div>
-            <div className="flex justify-around md:hidden">
-              <span></span>
-              <Button type="primary" target="_blank" href="https://fullvase.makeplans.com/events/42152" size="small" className="-m-8 bg-green-900! hover:bg-green-800!">
-                Book nå!
-              </Button>
-            </div>
-          </div>
-        </div> */}
-
         <div className="py-16 md:py-24 bg-fv-250 flex flex-col items-center">
           <p className="text-2xl md:text-6xl font-light text-center mx-18 max-w-4xl leading-relaxed md:leading-snug">
             Blomster du <i>faktisk</i> synes er skikkelig vakre. Vi designer din visjon til ditt
@@ -72,8 +48,8 @@ export default function Home() {
           <Button
             type="link"
             href="/portfolio"
-            size="middle"
-            className="mt-8 text-black! hover:text-fv-700! underline hidden!"
+            size="large"
+            className="mt-8 text-black! hover:text-fv-700! underline!"
           >
             Se tidligere arbeid
           </Button>
@@ -151,14 +127,14 @@ export default function Home() {
         <div className="relative flex justify-center">
           <div className="absolute text-center max-w-4xl text-white rounded-lg z-10 top-100 mx-12">
             <p className="text-4xl md:text-8xl">Blomster kan være både prakt og poesi.</p>
-            <p className="mt-16 md:text-2xl mx-12 md:mx-48 max-w-sm font-sans">
+            <p className="mt-16 md:text-2xl mx-12 md:mx-48 font-sans">
               Full Vase jobber med ulike ønsker, visjoner og blomster til våre kunder.
             </p>
             <Button
               type="link"
-              href="/contact"
-              size="middle"
-              className="mt-8 text-white! hover:text-fv-200! underline! hidden!"
+              href="/portfolio"
+              size="large"
+              className="mt-8 text-white! hover:text-fv-200! underline!"
             >
               Se hele portefølgen
             </Button>
@@ -174,6 +150,90 @@ export default function Home() {
             />
             <div className="absolute inset-0 bg-black/30"></div>
           </div>
+        </div>
+        
+        <div className="mt-32 mx-4 flex flex-col md:flex-row md:justify-center md:items-start md:gap-8">
+          <div className="relative inline-block w-full md:w-auto max-w-md mx-auto">
+            <Image
+              src="/landing/roses-girl.png"
+              alt=""
+              width={400}
+              height={800}
+              className="w-full h-auto"
+            />
+            <Image
+              src="/landing/fv-circle.png"
+              alt=""
+              width={400}
+              height={800}
+              className="absolute -top-16 -right-16 w-1/3 h-auto animate-[spin_20s_linear_infinite]"
+            />
+          </div>
+          <div className="w-full md:w-1/2 md:max-w-sm p-8 md:pt-24">
+            <h2 className="text-3xl font-bold text-center">Hei, Sara her fra Full Vase</h2>
+            <p className="mt-12">Bærekraft, blomster i sesong og kreative løsninger definerer Full vase sin måte å jobbe på.</p>
+            <div className="flex justify-center my-4">
+              <div className="w-[0.2px] h-12 bg-gray-400"></div>
+            </div>
+            <p className="text-center">“<i>I min første blomsterjobb ble jeg hekta på store, frodige buketter. Det beste jeg visste var når kunden stolte på meg, og ble skikkelig glad da de hentet buketten. Den følelsen prøver jeg å skape hver gang</i>”. - Sara A.</p>
+            <Image
+              src="/landing/sara-work.png"
+              alt=""
+              width={400}
+              height={800}
+              className="w-full h-auto mt-8"
+            />
+          </div>
+        </div>
+        
+        <div className="py-4 overflow-hidden">
+          <div className="animate-scroll-ville-skjonne whitespace-nowrap flex">
+            {Array.from({ length: 100 }, (_, i) => (
+              <div key={i} className="shrink-0 mr-8">
+                <Image
+                  src="/landing/ville-skjonne.jpg"
+                  alt="accessorie full vase"
+                  width={800}
+                  height={400}
+                  className="h-32 w-auto object-cover"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+       <div className="py-16 md:py-24 bg-fv-250 flex flex-col items-center">
+          <p className="text-2xl md:text-6xl font-light text-center mx-18 max-w-4xl leading-relaxed md:leading-snug">
+            Er du klar til å pynte ditt event med skikkelig fine blomster?
+          </p>
+          <Button
+            type="link"
+            href="/contact"
+            size="large"
+            className="mt-8 text-black! hover:text-fv-700! underline!"
+          >
+            Kontakt oss her
+          </Button>
+        </div>
+        
+        <div className="flex flex-col items-center my-12 md:my-48 mx-8">
+          <h2 className="font-sans font-bold">USIKKER PÅ HVA DU VIL HA?</h2>
+          <p className="my-8 max-w-lg text-center">Ingen stress, det er derfor vi er her. Fortell oss hva du ser for deg, så hjelper vi deg å finne det som passer best til dagen din.</p>
+          <Button
+            type="link"
+            href="/contact"
+            size="large"
+            className="text-black! hover:text-fv-700! underline!"
+          >
+            SEND FORESPØRSEL
+          </Button>
+          <Image
+            src="/landing/vase-with-card.png"
+            alt="Vase with card"
+            width={1920}
+            height={1080}
+            className="max-w-xl mt-8"
+          />
         </div>
       </main>
     </div>
