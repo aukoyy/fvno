@@ -193,7 +193,7 @@ export default function Home() {
             {Array.from({ length: 100 }, (_, i) => (
               <div key={i} className="shrink-0 mr-8">
                 <Image
-                  src="/landing/ville-skjonne.jpg"
+                  src="/landing/full-vase-banner-crop.png"
                   alt="accessorie full vase"
                   width={800}
                   height={400}
@@ -218,7 +218,7 @@ export default function Home() {
           </Button>
         </div>
         
-        <div className="flex flex-col items-center my-12 md:my-48 mx-8">
+        <div className="flex flex-col items-center my-12 md:my-24 mx-8">
           <h2 className="font-sans font-bold">USIKKER PÅ HVA DU VIL HA?</h2>
           <p className="my-8 max-w-lg text-center">Ingen stress, det er derfor vi er her. Fortell oss hva du ser for deg, så hjelper vi deg å finne det som passer best til dagen din.</p>
           <Button
