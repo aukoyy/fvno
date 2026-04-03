@@ -152,37 +152,39 @@ export default function Home() {
           </div>
         </div>
         
-        <div className="mt-32 mx-4 flex flex-col md:flex-row md:justify-center md:items-start md:gap-8">
-          <div className="relative inline-block w-full md:w-auto max-w-md mx-auto">
-            <Image
-              src="/landing/roses-girl.png"
-              alt=""
-              width={400}
-              height={800}
-              className="w-full h-auto"
-            />
-            <Image
-              src="/landing/fv-circle.png"
-              alt=""
-              width={400}
-              height={800}
-              className="absolute -top-16 -right-16 w-1/3 h-auto animate-[spin_20s_linear_infinite]"
-            />
-          </div>
-          <div className="w-full md:w-1/2 md:max-w-sm p-8 md:pt-24">
-            <h2 className="text-3xl font-bold text-center">Hei, Sara her fra Full Vase</h2>
-            <p className="mt-12">Bærekraft, blomster i sesong og kreative løsninger definerer Full vase sin måte å jobbe på.</p>
-            <div className="flex justify-center my-4">
-              <div className="w-[0.2px] h-12 bg-gray-400"></div>
+        <div className="py-24 flex justify-center">
+          <div className="w-full max-w-5xl flex flex-col items-center md:items-start md:flex-row md:justify-between">
+            <div className="">
+              <Image
+                src="/landing/roses-girl.png"
+                alt=""
+                width={400}
+                height={800}
+                className=""
+              />
+              {/* <Image
+                src="/landing/fv-circle.png"
+                alt=""
+                width={400}
+                height={800}
+                className=""
+              /> */}
             </div>
-            <p className="text-center">“<i>I min første blomsterjobb ble jeg hekta på store, frodige buketter. Det beste jeg visste var når kunden stolte på meg, og ble skikkelig glad da de hentet buketten. Den følelsen prøver jeg å skape hver gang</i>”. - Sara A.</p>
-            <Image
-              src="/landing/sara-work.png"
-              alt=""
-              width={400}
-              height={800}
-              className="w-full h-auto mt-8"
-            />
+            <div className="max-w-sm flex flex-col items-center mt-12 md:mt-56">
+              <h2 className="text-3xl font-bold text-center">Hei, Sara her fra Full Vase</h2>
+              <p className="mt-12">Bærekraft, blomster i sesong og kreative løsninger definerer Full vase sin måte å jobbe på.</p>
+              <div className="flex justify-center my-4">
+                <div className="w-[0.2px] h-12 bg-gray-400"></div>
+              </div>
+              <p className="text-center">“<i>I min første blomsterjobb ble jeg hekta på store, frodige buketter. Det beste jeg visste var når kunden stolte på meg, og ble skikkelig glad da de hentet buketten. Den følelsen prøver jeg å skape hver gang</i>”. - Sara A.</p>
+              <Image
+                src="/landing/sara-work.png"
+                alt=""
+                width={400}
+                height={800}
+                className="mt-4"
+              />
+            </div>
           </div>
         </div>
         
