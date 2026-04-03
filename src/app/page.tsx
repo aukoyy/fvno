@@ -154,7 +154,7 @@ export default function Home() {
         
         <div className="py-24 flex justify-center">
           <div className="w-full max-w-5xl flex flex-col items-center md:items-start md:flex-row md:justify-between">
-            <div className="">
+            <div className="relative">
               <Image
                 src="/landing/roses-girl.png"
                 alt=""
@@ -162,15 +162,15 @@ export default function Home() {
                 height={800}
                 className=""
               />
-              {/* <Image
+              <Image
                 src="/landing/fv-circle.png"
                 alt=""
                 width={400}
                 height={800}
-                className=""
-              /> */}
+                className="absolute -bottom-15 md:-top-15 -right-15 w-1/3 animate-[spin_25s_linear_infinite]"
+              />
             </div>
-            <div className="max-w-sm flex flex-col items-center mt-12 md:mt-56">
+            <div className="max-w-sm flex flex-col items-center mt-24 md:mt-56">
               <h2 className="text-3xl font-bold text-center">Hei, Sara her fra Full Vase</h2>
               <p className="mt-12">Bærekraft, blomster i sesong og kreative løsninger definerer Full vase sin måte å jobbe på.</p>
               <div className="flex justify-center my-4">
