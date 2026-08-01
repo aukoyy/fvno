@@ -46,7 +46,8 @@ export default function Portfolio() {
         </div>
       </div>
 
-      <div className="mx-6 mt-32">
+
+      <div className="mx-auto max-w-[2400px] px-6 mt-32">
         <Masonry
           columns={{ xs: 1, sm: 2, lg: 3, xxl: 4 }}
           gutter={12}
