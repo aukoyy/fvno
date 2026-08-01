@@ -55,7 +55,7 @@
 
 @keyframes scroll-right {
   0% {
-    transform: translateX(-50%);
+    transform: translateX(calc(-100% / 3));
   }
   100% {
     transform: translateX(0);

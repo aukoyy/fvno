@@ -31,8 +31,8 @@ export default function Portfolio() {
       {/* Horizontal carousel */}
       <div className="mt-16 mb-12 overflow-hidden">
         <div className="animate-scroll-right flex w-max">
-          {/* Duplicate the images for seamless loop */}
-          {[...gallerySliderImages, ...gallerySliderImages].map((img, index) => (
+          {/* Triplicate the images for seamless loop (needs to cover the full viewport width on large screens) */}
+          {[...gallerySliderImages, ...gallerySliderImages, ...gallerySliderImages].map((img, index) => (
             <div key={index} className="flex-shrink-0">
               <Image
                 src={img}
