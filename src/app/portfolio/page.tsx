@@ -12,7 +12,7 @@ export default function Portfolio() {
     "/portfolio/gallery-5.jpg",
   ];
   const brickWallImages = Array.from(
-    { length: 29 },
+    { length: 54 },
     (_, i) => `/portfolio/wall/brick-${i + 1}.jpg`
   );
 
