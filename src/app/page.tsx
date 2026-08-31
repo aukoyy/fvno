@@ -8,7 +8,7 @@ export default function Home() {
       <main className="font-serif">
         <div className="absolute bottom-24 md:bottom-48 md:ml-8 text-white p-6 rounded-lg space-y-4 md:space-y-8">
           <h1 className="text-md md:text-2xl font-sans font-semibold">VELKOMMEN TIL FULL VASE</h1>
-          <p className="text-4xl md:text-7xl">Frodig blosterdesign til ditt event</p>
+          <p className="text-4xl md:text-7xl">Frodig blomsterdesign til ditt event</p>
           <p className="max-w-md md:text-lg font-sans">
             Vi tror på blomster som forteller historier, om kjærlighet, glede og alt det vakre som
             gjør en dag uforglemmelig. Fyll vasen med minner og blomster.
