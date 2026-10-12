@@ -26,26 +26,33 @@ export default function Footer() {
             <ExternalLinkIcon className="ml-2 w-4" />
           </a>
         </div>
-        <div className="mt-12 flex justify-end">
-          <p className="text-xl">Følg oss på</p>
-          <a href='https://www.instagram.com/fullvase.no/' target='_blank' rel='noopener noreferrer'>
-            <Image
-              src="/footer/instagram-icon.png" 
-              alt="Instagram" 
-              width={24}  
-              height={24} 
-              className="ml-4" 
-            />
-          </a>
-          <a href='https://www.facebook.com/profile.php?id=61565082137564' target='_blank' rel='noopener noreferrer'>
-            <Image 
-              src="/footer/facebook-icon.png" 
-              alt="Facebook" 
-              width={24}  
-              height={24} 
-              className="ml-4" 
-            />
-          </a>
+        <div className="mt-12 flex flex-col-reverse gap-12 md:flex-row md:justify-between md:items-end">
+          <div className="flex flex-col text-sm space-y-1">
+            <Link href="/privacy" className="hover:underline">Personvernerklæring</Link>
+            <Link href="/privacy" className="hover:underline">Bruksvilkår</Link>
+            <Link href="/privacy" className="hover:underline">Innstillinger for informasjonskapsler</Link>
+          </div>
+          <div className="flex">
+            <p className="text-xl">Følg oss på</p>
+            <a href='https://www.instagram.com/fullvase.no/' target='_blank' rel='noopener noreferrer'>
+              <Image
+                src="/footer/instagram-icon.png" 
+                alt="Instagram" 
+                width={24}  
+                height={24} 
+                className="ml-4" 
+              />
+            </a>
+            <a href='https://www.facebook.com/profile.php?id=61565082137564' target='_blank' rel='noopener noreferrer'>
+              <Image 
+                src="/footer/facebook-icon.png" 
+                alt="Facebook" 
+                width={24}  
+                height={24} 
+                className="ml-4"
+              />
+            </a>
+          </div>
         </div>
       </div>
     </footer>
