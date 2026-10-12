@@ -23,7 +23,7 @@ export default function ImageTextLink({
       <p className="mt-4 mx-16 text-lg font-sans">{description}</p>
       <Link
         href={linkHref}
-        className="mt-2 inline-block text-black hover:text-fv-700 underline text-lg hidden!"
+        className="mt-6 inline-block font-sans font-normal uppercase text-black hover:text-fv-700 underline underline-offset-4 text-lg"
       >
         Les mer
       </Link>
