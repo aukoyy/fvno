@@ -20,15 +20,19 @@ export default function Header() {
   const [backgroundImage, setBackgroundImage] = useState<string>("/nav/workshop-girls.jpg");
   const pathname = usePathname();
 
-  const whiteThemePages = ["/", "/event", "/wedding"];
+  const whiteThemePages = ["/", "/event", "/bryllup"];
   const isWhiteThemePage = whiteThemePages.includes(pathname);
+  // Use white text/logo over hero images and over the open menu overlay
+  const isLightHeader = isOpen || (isWhiteThemePage && !showHeader);
+  const isSolidHeader = showHeader && !isOpen;
 
-  // Reset header state on navigation, e.g. when arriving from a footer link after scrolling down
+  // Reset header to its initial state on navigation, e.g. when arriving from a footer link after scrolling down
   const [prevPathname, setPrevPathname] = useState(pathname);
   if (pathname !== prevPathname) {
     setPrevPathname(pathname);
     setIsVisible(true);
-    setShowHeader(!isWhiteThemePage);
+    setShowHeader(false);
+    setShowShadow(false);
   }
 
   useEffect(() => {
@@ -114,9 +118,9 @@ export default function Header() {
         className={classNames(`fixed py-8 flex items-center w-full transition-all duration-300`, {
           "translate-y-0": isVisible,
           "-translate-y-full": !isVisible,
-          "bg-white backdrop-blur-sm text-fv-900": showHeader,
-          "bg-transparent text-white": !showHeader,
-          "shadow-lg": showShadow,
+          "bg-white backdrop-blur-sm text-fv-900": isSolidHeader,
+          "bg-transparent text-white": !isSolidHeader,
+          "shadow-lg": showShadow && !isOpen,
           "z-50": !isOpen,
           "z-70": isOpen,
         })}
@@ -125,8 +129,8 @@ export default function Header() {
         <div onClick={() => handleMenuToggle()} className="cursor-pointer p-6 shrink-0">
           <div
             className={classNames("flex space-x-2 transition-colors duration-200", {
-              "text-white hover:text-fv-200": isWhiteThemePage && !showHeader,
-              "text-fv-900 hover:text-fv-700": !isWhiteThemePage || showHeader,
+              "text-white hover:text-fv-200": isLightHeader,
+              "text-fv-900 hover:text-fv-700": !isLightHeader,
             })}
           >
             {isOpen ? (
@@ -142,7 +146,7 @@ export default function Header() {
         <div className="absolute left-1/2 transform -translate-x-1/2">
           <Link href="/" className="w-45 lg:w-72">
             <Image
-              src={isWhiteThemePage && !showHeader ? "/logo-white.png" : "/logo-black.png"}
+              src={isLightHeader ? "/logo-white.png" : "/logo-black.png"}
               alt="Logo"
               width={250}
               height={100}
@@ -160,8 +164,8 @@ export default function Header() {
           <Link
             href="https://www.instagram.com/fullvase.no/"
             className={classNames("flex items-center transition-colors duration-200", {
-              "text-white!": isWhiteThemePage && !showHeader,
-              "hover:text-fv-200!": isWhiteThemePage && !showHeader,
+              "text-white!": isLightHeader,
+              "hover:text-fv-200!": isLightHeader,
             })}
             target="_blank"
             rel="noopener noreferrer"
