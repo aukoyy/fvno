@@ -23,6 +23,14 @@ export default function Header() {
   const whiteThemePages = ["/", "/event", "/wedding"];
   const isWhiteThemePage = whiteThemePages.includes(pathname);
 
+  // Reset header state on navigation, e.g. when arriving from a footer link after scrolling down
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname);
+    setIsVisible(true);
+    setShowHeader(!isWhiteThemePage);
+  }
+
   useEffect(() => {
     const controlHeader = () => {
       const currentScrollY = window.scrollY;
@@ -49,6 +57,7 @@ export default function Header() {
         }
       } else {
         // console.log('Setting showHeader to true for non-white theme page');
+        setIsVisible(true);
         setShowHeader(true);
         setShowShadow(currentScrollY > 10);
       }

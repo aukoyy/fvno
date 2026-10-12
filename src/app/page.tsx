@@ -69,16 +69,19 @@ export default function Home() {
             title="Komplett event pakke"
             description="Fra scenedekor til bordoppsett og stemningslys.Vi planlegger, setter på plass og rydder opp etterpå, slik at alt er tatt hånd om."
             imageSrc="/landing/cheers-glasses.jpg"
+            linkHref="/event"
           />
           <ImageTextLink
             title="Ditt drømmebryllup"
             description="Brudebukett, knapphullsblomst, samt blomsterdekor og små detaljer som gjør bryllupsdagen helt unik."
             imageSrc="/landing/bridal-girl-flowers.jpg"
+            linkHref="/bryllup"
           />
           <ImageTextLink
             title="Spesielle anledninger"
             description="Enten det er frieri, bursdagsfeiring, konfirmasjon eller en kreativ workshop, vi leverer blomster og dekor til din anledning."
             imageSrc="/landing/giving-flowers.jpg"
+            linkHref="/event"
           />
         </div>
 
