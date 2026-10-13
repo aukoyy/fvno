@@ -7,7 +7,7 @@ export default function AboutPage() {
       <div className="flex items-center justify-center py-16 md:py-24">
         <div className="relative max-w-4xl w-full mx-4 md:mx-8">
           <Image
-            src="/about/arranging-roses.jpg"
+            src="/about/bak-blomstene.jpg"
             alt="Scenen på Tise Awards dekorert med blomster fra Full Vase"
             width={1000}
             height={1000}
