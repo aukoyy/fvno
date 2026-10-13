@@ -89,9 +89,9 @@ export default function EventPage() {
             type="link"
             href="/portfolio"
             size="large"
-            className="underline! mt-6 text-white! hover:text-fv-200! pl-0! hidden!"
+            className="underline! underline-offset-8! mt-12 mx-4 font-sans text-white! hover:text-fv-200! pl-0!"
           >
-            Få inspirasjon fra tidligere events i porteføljen vår.
+            Få inspirasjon fra tidligere events i porteføljen vår
           </Button>
         </div>
       </div>
