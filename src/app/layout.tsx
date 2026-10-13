@@ -27,7 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ConfigProvider
           theme={{
             token: {
-              colorPrimary: "#6E8BA2", // fv-cyan-600
+              colorPrimary: "#69585F", // fv-taupe
               colorLink: "black",
               colorLinkHover: "gray",
             },
