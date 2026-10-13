@@ -1,12 +1,13 @@
 import { Button } from "antd";
 import Image from "next/image";
+import HeroCarousel from "../components/hero-carousel";
 
 export default function EventPage() {
   return (
     <main className="font-serif">
       <div className="relative w-screen h-screen flex items-center justify-center">
         <Image
-          src="/event/tise-stage.jpg"
+          src="/event/dialogkonferansen.jpg"
           alt="Scenen på Tise Awards dekorert med blomster fra Full Vase"
           width={500}
           height={500}
@@ -75,25 +76,28 @@ export default function EventPage() {
         </div>
       </div>
 
-      <div className="relative w-full flex items-center justify-center text-center mt-18">
-        <Image
-          src="/event/boule-dog.jpg"
-          alt="Scenen på Tise Awards dekorert med blomster fra Full Vase"
-          width={500}
-          height={500}
-          className="absolute inset-0 w-full h-full object-cover -z-10"
-        />
-        <div className="text-white py-96">
-          <h3 className="text-5xl lg:text-7xl font-light mx-4">Hva passer til ditt event?</h3>
-          <Button
-            type="link"
-            href="/portfolio"
-            size="large"
-            className="underline! underline-offset-8! mt-12 mx-4 font-sans text-white! hover:text-fv-200! pl-0!"
-          >
-            Få inspirasjon fra tidligere events i porteføljen vår
-          </Button>
-        </div>
+      <div className="mt-18">
+        <HeroCarousel
+          slides={[
+            { src: "/event/dialogkonferansen-2.jpg", alt: "Blomsterdekorasjon fra Full Vase på Dialogkonferansen" },
+            { src: "/event/boule-dog.jpg", alt: "Blomsteroppsats fra Full Vase ved inngangen til Boule Dog" },
+            { src: "/event/uefa-5.jpg", alt: "Blomsterdekorasjon fra Full Vase på UEFA-arrangement" },
+          ]}
+        >
+          <div className="absolute inset-0 flex items-center justify-center text-center z-10">
+            <div className="text-white">
+              <h3 className="text-5xl lg:text-7xl font-light mx-4">Hva passer til ditt event?</h3>
+              <Button
+                type="link"
+                href="/portfolio"
+                size="large"
+                className="underline! underline-offset-8! mt-12 mx-4 font-sans text-white! hover:text-fv-200! pl-0!"
+              >
+                Få inspirasjon fra tidligere events i porteføljen vår
+              </Button>
+            </div>
+          </div>
+        </HeroCarousel>
       </div>
 
       <div className="flex flex-col mx-12 md:mx-auto text-center mt-40 max-w-xl space-y-8">
