@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Button } from "antd";
 import ImageTextLink from "./components/image-text-link";
+import HeroCarousel from "./components/hero-carousel";
 
 export default function Home() {
   return (
@@ -127,33 +128,30 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="relative flex justify-center">
-          <div className="absolute text-center max-w-4xl text-white rounded-lg z-10 top-100 mx-12">
-            <p className="text-4xl md:text-8xl">Blomster kan være både prakt og poesi.</p>
-            <p className="mt-16 md:text-2xl mx-12 md:mx-48 font-sans">
-              Full Vase jobber med ulike ønsker, visjoner og blomster til våre kunder.
-            </p>
-            <Button
-              type="link"
-              href="/portfolio"
-              size="large"
-              className="mt-8 text-white! hover:text-fv-200! underline!"
-            >
-              Se hele portefølgen
-            </Button>
+        <HeroCarousel
+          slides={[
+            { src: "/landing/jeloy-kirke.jpg", alt: "Blomsterdekorasjon fra Full Vase i Jeløy kirke" },
+            { src: "/landing/uefa-2.jpg", alt: "Blomsterdekorasjon fra Full Vase på UEFA-arrangement" },
+            { src: "/landing/dialogkonferansen.jpg", alt: "Blomsterdekorasjon fra Full Vase på Dialogkonferansen" },
+          ]}
+        >
+          <div className="absolute inset-x-0 flex justify-center z-10 top-100">
+            <div className="text-center max-w-4xl text-white mx-12">
+              <p className="text-4xl md:text-8xl">Blomster kan være både prakt og poesi.</p>
+              <p className="mt-16 md:text-2xl mx-12 md:mx-48 font-sans">
+                Full Vase jobber med ulike ønsker, visjoner og blomster til våre kunder.
+              </p>
+              <Button
+                type="link"
+                href="/portfolio"
+                size="large"
+                className="mt-8 text-white! hover:text-fv-200! underline!"
+              >
+                Se hele porteføljen
+              </Button>
+            </div>
           </div>
-          <div className="relative">
-            <Image
-              src="/landing/girls-in-flower-field.jpg"
-              alt="Full Vase Hero"
-              width={1920}
-              height={1080}
-              className="w-screen h-screen object-cover"
-              style={{ objectPosition: "67% center" }}
-            />
-            <div className="absolute inset-0 bg-black/30"></div>
-          </div>
-        </div>
+        </HeroCarousel>
         
         <div className="py-24 flex justify-center">
           <div className="w-full max-w-5xl flex flex-col items-center md:items-start md:flex-row md:justify-between">
