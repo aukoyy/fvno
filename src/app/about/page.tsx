@@ -67,24 +67,26 @@ export default function AboutPage() {
         </div>
       </div>
 
-      <div className="flex justify-center py-24">
-        <div className="bg-fv-200  border-6 border-fv-250 text-center py-16 px-6 md:px-24 mx-4">
-          <h2 className="text-4xl font-sans font-semibold italic">Det ligger i navnet</h2>
-          <div className="space-y-8 my-12 max-w-xl">
-            <p>
-              Full Vase skaper blomsterdekorasjoner til bryllup, events og selskaper - fra frodige
-              installasjoner til delikate bordoppsatser.
-            </p>
-            <p>
-              Vi tilpasser uttrykket etter sesong, lokale og visjon, og sørger for at blomstrene
-              blir en naturlig del av helhetsopplevelsen.
-            </p>
-            <p>
-              Enten du planlegger et storslått arrangement eller en intim feiring, hjelper vi deg å
-              skape stemning med blomster.
-            </p>
-            <p>Vi fyller vasen og atmosfæren med blomster &lt;3</p>
-          </div>
+      <div className="max-w-5xl mx-auto px-6 md:px-12 py-24 md:py-40 font-sans">
+        <h2 className="text-3xl md:text-4xl font-semibold italic">Det ligger i navnet</h2>
+        <p className="mt-10 max-w-lg leading-loose">
+          Full Vase skaper blomsterdekorasjoner til bryllup, events og selskaper - fra frodige
+          installasjoner til delikate bordoppsatser.
+        </p>
+        <Image
+          src="/about/holde-glass.jpg"
+          alt="Hånd som holder et champagneglass med Full Vase-sløyfe"
+          width={800}
+          height={1200}
+          className="mt-12 md:ml-[15%] w-full max-w-md h-auto"
+        />
+        <div className="mt-16 md:ml-[30%] max-w-lg space-y-8 leading-loose">
+          <p>
+            Vi tilpasser uttrykket etter sesong, lokale og visjon, og sørger for at blomstrene blir
+            en naturlig del av helhetsopplevelsen. Enten du planlegger et storslått arrangement eller
+            en intim feiring, hjelper vi deg å skape stemning med blomster.
+          </p>
+          <p>Vi fyller vasen og atmosfæren med blomster &lt;3</p>
         </div>
       </div>
     </main>
