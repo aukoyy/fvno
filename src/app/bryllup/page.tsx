@@ -31,7 +31,7 @@ export default function WeddingPage() {
         </Button>
       </div>
 
-      <div className="bg-fv-250 py-32 flex flex-col items-center gap-8 ">
+      <div className="bg-fv-timberwolf py-32 flex flex-col items-center gap-8 ">
         <div className="max-w-3xl mx-auto text-center px-6 space-y-6 ">
           <h2 className="text-4xl lg:text-6xl leading-tight">La oss snakke drømmebryllup!</h2>
           <p className="max-w-sm font-sans mx-auto mt-12">

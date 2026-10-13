@@ -133,7 +133,7 @@ export default function EventPage() {
         </p>
       </div>
 
-      <div className="text-center mt-24 flex justify-around items-center bg-fv-300">
+      <div className="text-center mt-24 flex justify-around items-center bg-fv-timberwolf">
         <div className="px-4">
           <Image
             src="/event/gamlelogen-logo.webp"

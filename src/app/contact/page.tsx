@@ -88,7 +88,7 @@ export default function Contact() {
               className="object-cover h-full"
             />
           </div>
-          <div className="bg-fv-300 w-full md:w-2/3 pt-12 px-4 md:px-8">
+          <div className="bg-fv-timberwolf w-full md:w-2/3 pt-12 px-4 md:px-8">
             <div className="[&_.ant-form-item-label>label]:font-semibold w-full">
               <Form
                 form={form}

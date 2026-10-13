@@ -28,7 +28,7 @@ export default function Home() {
           style={{ objectPosition: "67% center" }}
         />
 
-        <div className="py-4 bg-fv-400 overflow-hidden">
+        <div className="py-4 bg-fv-taupe overflow-hidden">
           <div className="animate-scroll whitespace-nowrap">
             {Array.from({ length: 100 }, (_, i) => (
               <span
@@ -41,7 +41,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="py-16 md:py-24 bg-fv-250 flex flex-col items-center">
+        <div className="py-16 md:py-24 bg-fv-timberwolf flex flex-col items-center">
           <p className="text-2xl md:text-6xl font-light text-center mx-18 max-w-4xl leading-relaxed md:leading-snug">
             Blomster du <i>faktisk</i> synes er skikkelig vakre. Vi designer din visjon til ditt
             event eller bryllup.
@@ -205,7 +205,7 @@ export default function Home() {
           </div>
         </div>
 
-       <div className="py-16 md:py-24 bg-fv-250 flex flex-col items-center">
+       <div className="py-16 md:py-24 bg-fv-timberwolf flex flex-col items-center">
           <p className="text-2xl md:text-6xl font-light text-center mx-18 max-w-4xl leading-relaxed md:leading-snug">
             Er du klar til å pynte ditt event med skikkelig fine blomster?
           </p>
