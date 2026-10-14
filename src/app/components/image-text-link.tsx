@@ -10,12 +10,12 @@ type ImageTextLinkProps = {
 };
 
 export default function ImageTextLink({
-  imageSrc = "/portrait-image.png",
+  imageSrc,
   imageAlt = "placeholder",
   title,
   description,
   linkHref = "/services",
-}: Partial<ImageTextLinkProps>) {
+}: Partial<ImageTextLinkProps> & Pick<ImageTextLinkProps, "imageSrc">) {
   return (
     <div className="mx-8 md:w-1/4 text-center font-light">
       <Image src={imageSrc} alt={imageAlt} width={1080} height={1920} />
