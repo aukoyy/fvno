@@ -22,14 +22,14 @@ export default function AboutPage() {
         </div>
       </div>
 
-      <div className="flex flex-col items-center lg:flex-row mt-24 w-full">
+      <div className="flex flex-col items-center lg:flex-row mt-24 w-full max-w-screen-2xl mx-auto">
         <div className="lg:w-1/3">
           <Image
             src="/about/sara-about-1.jpg"
             alt="Sara from Full Vase arranging flowers"
             width={800}
             height={600}
-            className=""
+            className="w-full h-auto"
           />
         </div>
         <div className="lg:w-1/3 text-center px-12 space-y-12 py-12 lg:py-0 flex flex-col justify-center">
@@ -62,7 +62,7 @@ export default function AboutPage() {
             alt="Sara from Full Vase arranging flowers"
             width={800}
             height={600}
-            className=""
+            className="w-full h-auto"
           />
         </div>
       </div>
