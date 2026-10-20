@@ -20,7 +20,7 @@ export default function Home() {
         </div>
 
         <Image
-          src="/landing/fv-hero-2-min.jpg"
+          src="/landing/full-vase-oslo-gamle-logen-blomster.jpg"
           alt="Full Vase Hero"
           width={1920}
           height={1080}
