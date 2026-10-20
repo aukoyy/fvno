@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function Footer() {
   return (
     <footer className="bg-fv-timberwolf flex justify-center pb-24">
-      <div className="px-12 py-24 max-w-8xl">
+      <div className="px-8 md:px-12 py-24 max-w-8xl">
         <p className="text-3xl md:text-6xl font-serif">
           La din blomsterdekorasjon være nestemanns inspirasjon.
         </p>

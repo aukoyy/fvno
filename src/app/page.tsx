@@ -24,7 +24,7 @@ export default function Home() {
           alt="Full Vase Hero"
           width={1920}
           height={1080}
-          className="w-screen h-screen object-cover"
+          className="w-full h-screen object-cover"
           style={{ objectPosition: "67% center" }}
         />
 
@@ -65,9 +65,9 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-center items-center md:items-start gap-12 mb-40">
+        <div className="flex flex-col md:flex-row justify-center items-center md:items-start gap-12 lg:gap-28 mb-40">
           <ImageTextLink
-            title="Komplett event pakke"
+            title="Komplett eventpakke"
             description="Fra scenedekor til bordoppsett og stemningslys.Vi planlegger, setter på plass og rydder opp etterpå, slik at alt er tatt hånd om."
             imageSrc="/landing/cheers-glasses.jpg"
             linkHref="/event"
@@ -153,9 +153,9 @@ export default function Home() {
           </div>
         </HeroCarousel>
         
-        <div className="py-24 flex justify-center">
+        <div className="py-24 flex justify-center overflow-x-clip">
           <div className="w-full max-w-5xl flex flex-col items-center md:items-start md:flex-row md:justify-between">
-            <div className="relative">
+            <div className="relative mx-8 md:mx-0">
               <Image
                 src="/landing/roses-girl.png"
                 alt=""
@@ -166,9 +166,9 @@ export default function Home() {
               <Image
                 src="/landing/fv-circle.png"
                 alt=""
-                width={400}
-                height={800}
-                className="absolute -bottom-15 md:-top-15 -right-15 w-1/3 animate-[spin_25s_linear_infinite]"
+                width={220}
+                height={220}
+                className="absolute -bottom-15 md:-top-15 -right-6 md:-right-15 w-1/3 animate-[spin_25s_linear_infinite]"
               />
             </div>
             <div className="max-w-sm flex flex-col items-center mt-24 md:mt-56">
@@ -235,7 +235,7 @@ export default function Home() {
             alt="Vase with card"
             width={1920}
             height={1080}
-            className="max-w-xl mt-8"
+            className="w-full max-w-xl mt-8"
           />
         </div>
       </main>

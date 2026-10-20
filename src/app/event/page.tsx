@@ -5,7 +5,7 @@ import HeroCarousel from "../components/hero-carousel";
 export default function EventPage() {
   return (
     <main className="font-serif">
-      <div className="relative w-screen h-screen flex items-center justify-center">
+      <div className="relative w-full h-screen flex items-center justify-center">
         <Image
           src="/event/dialogkonferansen.jpg"
           alt="Scenen på Tise Awards dekorert med blomster fra Full Vase"

@@ -25,7 +25,7 @@ export default function HeroCarousel({ slides, interval = 6000, children }: Hero
   }, [activeIndex, interval, slides.length]);
 
   return (
-    <div className="relative w-screen h-screen overflow-hidden">
+    <div className="relative w-full h-screen overflow-hidden">
       {slides.map((slide, index) => (
         <Image
           key={slide.src}
