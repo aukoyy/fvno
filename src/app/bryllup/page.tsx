@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function WeddingPage() {
   return (
     <main className="font-serif mb-24">
-      <div className="relative w-screen h-screen flex items-center justify-center bg-black/30">
+      <div className="relative w-full h-screen flex items-center justify-center bg-black/30">
         <Image
           src="/bryllup/bridal-girl-flowers.jpg"
           alt="Scenen på Tise Awards dekorert med blomster fra Full Vase"
