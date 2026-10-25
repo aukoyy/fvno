@@ -20,6 +20,9 @@ interface NavGroup {
 
 export default function Nav({ setIsOpen, setBackgroundImage }: NavProps) {
   const pathname = usePathname();
+  // The underlined item: starts at the current page and follows the last item hovered with a mouse
+  const [highlightedHref, setHighlightedHref] = useState(pathname);
+
   const handleLinkClick = () => {
     setTimeout(() => setIsOpen(false), 200);
   };
@@ -64,56 +67,46 @@ export default function Nav({ setIsOpen, setBackgroundImage }: NavProps) {
     });
   }, [navGroups]);
 
-  const NavItem = ({ href, label, imageSrc }: NavItemProps) => {
-    const isActive = pathname === href;
-    const [isHovering, setIsHovering] = useState(false);
-
-    return (
-      <Link
-        href={href}
-        className="block transition-colors my-4 text-white! hover:text-fv-200! relative"
-        onClick={handleLinkClick}
-        onMouseEnter={() => {
-          setIsHovering(true);
-          if (imageSrc) {
-            setBackgroundImage(imageSrc);
-          }
-        }}
-        onMouseLeave={() => {
-          setIsHovering(false);
-        }}
-      >
-        <span className="relative inline-block">
-          {label}
-          <motion.div
-            className="absolute bottom-0 left-0 w-full h-0.5 bg-white"
-            initial={{ scaleX: isActive ? 1 : 0 }}
-            animate={{
-              scaleX: isActive || isHovering ? 1 : 0,
-              transformOrigin: isHovering ? "left" : "right",
-            }}
-            transition={{
-              duration: 0.3,
-              ease: "easeInOut",
-            }}
-          />
-        </span>
-      </Link>
-    );
-  };
-
-  const NavSection = ({ items }: NavGroup) => (
-    <div className="lg:flex justify-between lg:space-x-24 lg:mt-12">
-      {items.map((item, index) => (
-        <NavItem key={`${item.href}-${index}`} {...item} />
-      ))}
-    </div>
-  );
-
   return (
     <nav className="text-2xl md:text-3xl xl:text-6xl font-serif">
-      {navGroups.map((group, index) => (
-        <NavSection key={index} {...group} />
+      {navGroups.map((group, groupIndex) => (
+        <div key={groupIndex} className="lg:flex justify-between lg:space-x-24 lg:mt-12">
+          {group.items.map(({ href, label, imageSrc }) => {
+            const isHighlighted = highlightedHref === href;
+
+            return (
+              <Link
+                key={href}
+                href={href}
+                className="block transition-colors my-4 text-white! hover:text-fv-200! relative"
+                onClick={handleLinkClick}
+                onPointerEnter={(e) => {
+                  // Only react to real mouse hover; touch taps should navigate on the first press
+                  if (e.pointerType !== "mouse") return;
+                  setHighlightedHref(href);
+                  if (imageSrc) {
+                    setBackgroundImage(imageSrc);
+                  }
+                }}
+              >
+                <span className="relative inline-block">
+                  {label}
+                  <motion.div
+                    className="absolute bottom-0 left-0 w-full h-0.5 bg-white"
+                    style={{ transformOrigin: "left" }}
+                    initial={false}
+                    animate={{ scaleX: isHighlighted ? 1 : 0 }}
+                    // Animate the underline in, but hide the previous one instantly
+                    transition={{
+                      duration: isHighlighted ? 0.3 : 0,
+                      ease: "easeInOut",
+                    }}
+                  />
+                </span>
+              </Link>
+            );
+          })}
+        </div>
       ))}
     </nav>
   );
